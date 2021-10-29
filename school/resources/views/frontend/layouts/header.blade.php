@@ -23,13 +23,13 @@
                 </div>
                 <div class="col-xs-10 text-right menu-1">
                     <ul>
-                        <li class="active"><a href="index.html">Home</a></li>
-                        <li><a href="courses.html">Courses</a></li>
-                        <li><a href="teacher.html">Teacher</a></li>
-                        <li><a href="about.html">About</a></li>
-                        <li><a href="pricing.html">Pricing</a></li>
+                        <li class="active"><a href="{{route('frontend.layouts.home')}}">Home</a></li>
+                        <li><a href="{{route('frontend.layouts.course')}}">Courses</a></li>
+                        <li><a href="{{route('frontend.layouts.teacher')}}">Teacher</a></li>
+                        <li><a href="{{route('frontend.layouts.about')}}">About</a></li>
+                        <li><a href="{{route('frontend.layouts.pricing')}}">Pricing</a></li>
                         <li class="has-dropdown">
-                            <a href="blog.html">Blog</a>
+                            <a href="{{route('frontend.layouts.blog')}}">Blog</a>
                             <ul class="dropdown">
                                 <li><a href="#">Web Design</a></li>
                                 <li><a href="#">eCommerce</a></li>
@@ -37,7 +37,7 @@
                                 <li><a href="#">API</a></li>
                             </ul>
                         </li>
-                        <li><a href="contact.html">Contact</a></li>
+                        <li><a href="{{route('frontend.layouts.contact')}}">Contact</a></li>
                         <li class="btn-cta"><a href="#"><span>Login</span></a></li>
                         <li class="btn-cta"><a href="#"><span>Create a Course</span></a></li>
                     </ul>

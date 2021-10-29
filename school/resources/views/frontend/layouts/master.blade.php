@@ -79,11 +79,6 @@
         <!----Navbar Part/---->
 
 
-        <!----Navbar Part----->
-        @include('frontend.layouts.slider')
-        <!----Navbar Part/---->
-
-
         <!----Main Content------>
         @yield('content')
         <!----Main Content/----->

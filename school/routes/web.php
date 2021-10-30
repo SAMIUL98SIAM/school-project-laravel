@@ -29,3 +29,12 @@ Route::get('/contact', [App\Http\Controllers\Frontend\FrontendController::class,
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+Route::prefix('users')->group(function(){
+    Route::get('/view',[\App\Http\Controllers\Admin\UserController::class,'index'])->name('users.view');
+    Route::get('/create',[\App\Http\Controllers\Admin\UserController::class,'create'])->name('users.create');
+    Route::post('/create',[\App\Http\Controllers\Admin\UserController::class,'store'])->name('users.store');
+    Route::get('/edit/{id}',[\App\Http\Controllers\Admin\UserController::class,'edit'])->name('users.edit');
+    Route::post('/update/{id}',[\App\Http\Controllers\Admin\UserController::class,'update'])->name('users.update');
+    Route::get('/delete/{id}',[\App\Http\Controllers\Admin\UserController::class,'delete'])->name('users.delete');
+});

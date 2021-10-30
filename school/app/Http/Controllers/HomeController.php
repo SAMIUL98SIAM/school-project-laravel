@@ -23,6 +23,6 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('admin.layouts.dashboard');
+        return view('admin.layouts.master.dashboard');
     }
 }

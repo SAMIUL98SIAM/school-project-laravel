@@ -38,7 +38,7 @@
                             </ul>
                         </li>
                         <li><a href="{{route('frontend.layouts.contact')}}">Contact</a></li>
-                        <li class="btn-cta"><a href="#"><span>Login</span></a></li>
+                        <li class="btn-cta"><a href="{{ route('login') }}"><span>Login</span></a></li>
                         <li class="btn-cta"><a href="#"><span>Create a Course</span></a></li>
                     </ul>
                 </div>

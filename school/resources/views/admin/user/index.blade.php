@@ -7,11 +7,11 @@
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1 class="m-0">Manager User</h1>
+                    <h1 class="m-0">Manage User</h1>
                 </div><!-- /.col -->
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
-                    <li class="breadcrumb-item"><a href="#">Home</a></li>
+                    <li class="breadcrumb-item"><a href="{{route('home')}}">Home</a></li>
                     <li class="breadcrumb-item active">User</li>
                     </ol>
                 </div><!-- /.col -->
@@ -113,8 +113,58 @@
                                 <td>{{$user->name}}</td>
                                 <td>{{$user->email}}</td>
                                 <td>
-                                    <a title="Edit" class="btn btn-sm btn-primary" href=""><i class="fa fa-edit"></i></a>
-                                    <a title="Delete" class="btn btn-sm btn-danger" href=""><i class="fa fa-trash"></i></a>
+                                    <button title="Edit" class="btn btn-sm btn-primary"  data-toggle="modal" data-target="#editModal{{$key}}"><i class="fa fa-edit"></i></button>
+                                    {{--Edit Modal--}}
+                                    <div style="color: #000" class="modal fade" id="editModal{{ $key }}">
+                                        <div class="modal-dialog" role="document">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h5 class="modal-title">Edit User</h5>
+                                                    <button type="button" class="close" data-dismiss="modal"><span>&times;</span>
+                                                    </button>
+                                                </div>
+                                                <div class="modal-body">
+                                                    <form method="post" action="{{ route('users.update',$user->id) }}">
+                                                        @csrf
+                                                        @method('PUT')
+                                                        <div class="form-group">
+                                                            <label class="usertype">User Role</label>
+                                                            <select name="usertype" id="usertype" class="form-control">
+                                                                <option value="">Select Role</option>
+                                                                <option value="Admin"{{($user->usertype=="Admin")?"selected":""}}>Admin</option>
+                                                                <option value="Manager"{{($user->usertype=="Manager")?"selected":""}}>Manager</option>
+                                                            </select>
+                                                            {{-- <font style="color:red;">
+                                                                {{($errors->has('usertype'))?($errors->first('usertype')):''}}
+                                                            </font> --}}
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <label class="package_name">Name</label>
+                                                            <input type="text" name="name" class="form-control" required="" value="{{ $user->name }}">
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <label class="amount">Email</label>
+                                                            <input type="email" name="email" class="form-control" required="" value="{{ $user->email }}">
+                                                        </div>
+                                                        <div hidden class="form-group">
+                                                            <label class="password">Password</label>
+                                                            <input type="password" name="password" id="password" value="{{$user->password}}" class="form-control" placeholder="Password">
+                                                            {{-- <font style="color:red;">
+                                                                {{($errors->has('password'))?($errors->first('password')):''}}
+                                                            </font> --}}
+                                                        </div>
+                                                        <div class="modal-footer">
+                                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                                            <button type="submit" class="btn btn-primary">Save Changes</button>
+                                                        </div>
+                                                    </form>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    {{--Edit Modal--}}
+                                    {{-- <a title="Delete" class="btn btn-sm btn-danger" href="{{route('users.delete',$user->id)}}" id="delete"><i class="fa fa-trash"></i></a> --}}
+                                    <a title="Delete" href="{{route('users.delete',$user->id)}}" class="btn btn-sm btn-danger" id="delete"><i class="fas fa-trash"></i></a>
                                 </td>
                             </tr>
                             @endforeach

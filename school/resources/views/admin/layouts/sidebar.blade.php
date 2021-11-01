@@ -11,7 +11,8 @@
       <!-- Sidebar user panel (optional) -->
       <div class="user-panel mt-3 pb-3 mb-3 d-flex">
         <div class="image">
-          <img src="{{asset('/admin/dist/img/user2-160x160.jpg')}}" class="img-circle elevation-2" alt="User Image">
+            {{-- <img id="showImage" src="{{!empty($user->image)?url('/upload/user_image/'.$user->image):url('/upload/no_image.jpg')}}" height="150px" width="130px;" alt="Card image cap"/> --}}
+          {{-- <img src="{{!empty($user->image)?url('/school-project/upload/user_image/'.$user->image):url('/upload/no_image.jpg')}}" class="img-circle elevation-2" alt="User Image"> --}}
         </div>
         <div class="info">
           <a href="#" class="d-block">{{ Auth::user()->name }}</a>
@@ -33,11 +34,12 @@
     <!-- Sidebar Menu -->
     <nav class="mt-2">
         <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+
             <li class="nav-item">
                 <a href="#" class="nav-link">
                   <i class="nav-icon fas fa-copy"></i>
                   <p>
-                    Layout Options
+                    Manage User
                     <i class="fas fa-angle-left right"></i>
                     {{-- <span class="badge badge-info right">6</span> --}}
                   </p>
@@ -46,7 +48,26 @@
                   <li class="nav-item">
                     <a href="{{route('users.view')}}" class="nav-link">
                       <i class="far fa-user nav-icon"></i>
-                      <p>Manage User</p>
+                      <p>View User</p>
+                    </a>
+                  </li>
+                </ul>
+            </li>
+
+            <li class="nav-item">
+                <a href="#" class="nav-link">
+                  <i class="nav-icon fas fa-copy"></i>
+                  <p>
+                    Manage Profile
+                    <i class="fas fa-angle-left right"></i>
+                    {{-- <span class="badge badge-info right">6</span> --}}
+                  </p>
+                </a>
+                <ul class="nav nav-treeview">
+                  <li class="nav-item">
+                    <a href="{{route('profiles.view')}}" class="nav-link">
+                      <i class="far fa-user nav-icon"></i>
+                      <p>View Profile</p>
                     </a>
                   </li>
                 </ul>

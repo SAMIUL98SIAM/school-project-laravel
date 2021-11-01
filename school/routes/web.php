@@ -34,7 +34,16 @@ Route::prefix('users')->group(function(){
     Route::get('/view',[\App\Http\Controllers\Admin\UserController::class,'index'])->name('users.view');
     Route::get('/create',[\App\Http\Controllers\Admin\UserController::class,'create'])->name('users.create');
     Route::post('/create',[\App\Http\Controllers\Admin\UserController::class,'store'])->name('users.store');
-    Route::get('/edit/{id}',[\App\Http\Controllers\Admin\UserController::class,'edit'])->name('users.edit');
-    Route::post('/update/{id}',[\App\Http\Controllers\Admin\UserController::class,'update'])->name('users.update');
-    Route::get('/delete/{id}',[\App\Http\Controllers\Admin\UserController::class,'delete'])->name('users.delete');
+    //Route::get('/edit/{id}',[\App\Http\Controllers\Admin\UserController::class,'edit'])->name('users.edit');
+    Route::put('/update/{id}',[\App\Http\Controllers\Admin\UserController::class,'update'])->name('users.update');
+    Route::get('/delete/{id}',[\App\Http\Controllers\Admin\UserController::class,'destroy'])->name('users.delete');
+});
+
+Route::prefix('profiles')->group(function(){
+    Route::get('/view',[\App\Http\Controllers\Admin\ProfileController::class,'index'])->name('profiles.view');
+    // Route::get('/create',[\App\Http\Controllers\Admin\ProfileController::class,'create'])->name('profiles.create');
+    // Route::post('/create',[\App\Http\Controllers\Admin\ProfileController::class,'store'])->name('profiles.store');
+    Route::get('/edit',[\App\Http\Controllers\Admin\ProfileController::class,'edit'])->name('profiles.edit');
+    Route::post('/update',[\App\Http\Controllers\Admin\ProfileController::class,'update'])->name('profiles.update');
+   // Route::get('/delete/{id}',[\App\Http\Controllers\Admin\ProfileController::class,'destroy'])->name('profiles.delete');
 });

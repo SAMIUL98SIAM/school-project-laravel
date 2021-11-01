@@ -31,6 +31,14 @@
   <link rel="stylesheet" href="{{asset('/admin/plugins/datatables-buttons/css/buttons.bootstrap4.min.css')}}">
   <!-- jQuery -->
   <script src="{{asset('/admin/plugins/jquery/jquery.min.js')}}"></script>
+  <style type="text/css">
+      .notifyjs-corner{
+          z-index: 10000 !important;
+      }
+  </style>
+  {{-- <script src="{{asset('/admin/js/cdn.js')}}"></script> --}}
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/notify/0.4.2/notify.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </head>
 <body class="hold-transition sidebar-mini layout-fixed">
 <div class="wrapper">
@@ -53,6 +61,20 @@
 
    <!----Main Content----->
    @yield('content')
+   @if(session()->has('success'))
+        <script type="text/javascript">
+            $(function(){
+                $.notify("{{session()->get('success')}}",{globalPosition:'top right',className:'success'});
+            });
+        </script>
+   @endif
+   @if(session()->has('fail'))
+   <script type="text/javascript">
+       $(function(){
+           $.notify("{{session()->get('fail')}}",{globalPosition:'top right',className:'fail'});
+       });
+   </script>
+@endif
    <!----Main Content/---->
 
    <!----Footer----->
@@ -133,6 +155,45 @@
         "autoWidth": false,
         "responsive": true,
       });
+    });
+</script>
+<script type="text/javascript">
+    $(function(){
+        $(document).on('click','#delete',function(e){
+            e.preventDefault();
+            var link = $(this).attr("href");
+            Swal.fire({
+                title: 'Are you sure?',
+                text: "Delete this data?",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Yes, delete it!'
+            }).then((result) => {
+                if (result.value)
+                {
+                    window.location.href= link;
+                    Swal.fire(
+                    'Deleted!',
+                    'Your file has been deleted.',
+                    'success'
+                    )
+                }
+            })
+        });
+    });
+</script>
+<script type="text/javascript">
+    $(document).ready(function(){
+        $('#image').change(function(e){
+            var reader = new FileReader();
+            reader.onload = function(e)
+            {
+                $('#showImage').attr('src',e.target.result);
+            }
+            reader.readAsDataURL(e.target.files['0']);
+        });
     });
 </script>
 @yield('scripts')

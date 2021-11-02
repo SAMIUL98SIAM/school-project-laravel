@@ -68,10 +68,10 @@
             });
         </script>
    @endif
-   @if(session()->has('fail'))
+   @if(session()->has('error'))
    <script type="text/javascript">
        $(function(){
-           $.notify("{{session()->get('fail')}}",{globalPosition:'top right',className:'fail'});
+           $.notify("{{session()->get('error')}}",{globalPosition:'top right',className:'error'});
        });
    </script>
 @endif

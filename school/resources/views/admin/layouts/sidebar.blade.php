@@ -1,3 +1,8 @@
+@php
+    $prefix = Request::route()->getPrefix();
+    $route = Route::current()->getName();
+@endphp
+
 <!-- Main Sidebar Container -->
 <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
@@ -11,31 +16,17 @@
       <!-- Sidebar user panel (optional) -->
       <div class="user-panel mt-3 pb-3 mb-3 d-flex">
         <div class="image">
-            {{-- <img id="showImage" src="{{!empty($user->image)?url('/upload/user_image/'.$user->image):url('/upload/no_image.jpg')}}" height="150px" width="130px;" alt="Card image cap"/> --}}
-          {{-- <img src="{{!empty($user->image)?url('/school-project/upload/user_image/'.$user->image):url('/upload/no_image.jpg')}}" class="img-circle elevation-2" alt="User Image"> --}}
+            <img class="profile-user-img img-fluid img-circle" src="{{!empty(Auth::user()->image)?url('/school/public/upload/user_image/'.Auth::user()->image):url('/upload/no_image.jpg/')}}" alt="User profile picture">
         </div>
         <div class="info">
           <a href="#" class="d-block">{{ Auth::user()->name }}</a>
         </div>
       </div>
 
-      <!-- SidebarSearch Form -->
-      <div class="form-inline">
-        <div class="input-group" data-widget="sidebar-search">
-          <input class="form-control form-control-sidebar" type="search" placeholder="Search" aria-label="Search">
-          <div class="input-group-append">
-            <button class="btn btn-sidebar">
-              <i class="fas fa-search fa-fw"></i>
-            </button>
-          </div>
-        </div>
-    </div>
-
     <!-- Sidebar Menu -->
     <nav class="mt-2">
         <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
-
-            <li class="nav-item">
+            <li class="nav-item has-treeview  {{$prefix=='/users'?'menu-open':''}}">
                 <a href="#" class="nav-link">
                   <i class="nav-icon fas fa-copy"></i>
                   <p>
@@ -46,7 +37,7 @@
                 </a>
                 <ul class="nav nav-treeview">
                   <li class="nav-item">
-                    <a href="{{route('users.view')}}" class="nav-link">
+                    <a href="{{route('users.view')}}" class="nav-link {{$route=='users.view'?'active':''}}">
                       <i class="far fa-user nav-icon"></i>
                       <p>View User</p>
                     </a>
@@ -54,7 +45,7 @@
                 </ul>
             </li>
 
-            <li class="nav-item">
+            <li class="nav-item has-treeview {{$prefix=='/profiles'?'menu-open':''}}">
                 <a href="#" class="nav-link">
                   <i class="nav-icon fas fa-copy"></i>
                   <p>
@@ -65,13 +56,40 @@
                 </a>
                 <ul class="nav nav-treeview">
                   <li class="nav-item">
-                    <a href="{{route('profiles.view')}}" class="nav-link">
+                    <a href="{{route('profiles.view')}}" class="nav-link {{$route=='profiles.view'?'active':''}}">
                       <i class="far fa-user nav-icon"></i>
                       <p>View Profile</p>
                     </a>
                   </li>
+
+                  <li class="nav-item">
+                    <a href="{{route('profiles.view')}}" class="nav-link {{$route=='profiles.view'?'active':''}}">
+                      <i class="far fa-user nav-icon"></i>
+                      <p>Change Password</p>
+                    </a>
+                  </li>
                 </ul>
             </li>
+
+            <li class="nav-item has-treeview {{$prefix=='/logos'?'menu-open':''}}">
+                <a href="#" class="nav-link">
+                  <i class="nav-icon fas fa-copy"></i>
+                  <p>
+                    Manage Logo
+                    <i class="fas fa-angle-left right"></i>
+                    {{-- <span class="badge badge-info right">6</span> --}}
+                  </p>
+                </a>
+                <ul class="nav nav-treeview">
+                  <li class="nav-item">
+                    <a href="{{route('logos.view')}}" class="nav-link {{$route=='logos.view'?'active':''}}">
+                      <i class="far fa-user nav-icon"></i>
+                      <p>View Logo</p>
+                    </a>
+                  </li>
+                </ul>
+            </li>
+
         </ul>
     </nav>
 </aside>

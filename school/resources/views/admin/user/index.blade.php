@@ -65,16 +65,10 @@
                                         <div class="form-group">
                                             <label class="email">Email</label>
                                             <input type="email" name="email" id="email" value="{{old('email')}}" class="form-control" placeholder="Email">
-                                            {{-- <font style="color:red;">
-                                                {{($errors->has('email'))?($errors->first('email')):''}}
-                                            </font> --}}
                                         </div>
                                         <div class="form-group">
                                             <label class="password">Password</label>
                                             <input type="password" name="password" id="password" value="{{old('password')}}" class="form-control" placeholder="Password">
-                                            {{-- <font style="color:red;">
-                                                {{($errors->has('password'))?($errors->first('password')):''}}
-                                            </font> --}}
                                         </div>
                                         <div class="form-group">
                                             <label class="password">Confirm Password</label>
@@ -149,9 +143,6 @@
                                                         <div hidden class="form-group">
                                                             <label class="password">Password</label>
                                                             <input type="password" name="password" id="password" value="{{$user->password}}" class="form-control" placeholder="Password">
-                                                            {{-- <font style="color:red;">
-                                                                {{($errors->has('password'))?($errors->first('password')):''}}
-                                                            </font> --}}
                                                         </div>
                                                         <div class="modal-footer">
                                                             <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>

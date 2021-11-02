@@ -1,7 +1,4 @@
 @extends('admin.layouts.master')
-
-
-
 @section('content')
     <!-- Content Wrapper. Contains page content -->
     <div class="content-wrapper">
@@ -10,12 +7,12 @@
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1 class="m-0">Manage Profile</h1>
+                    <h1 class="m-0">Manage Logo</h1>
                 </div><!-- /.col -->
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
                     <li class="breadcrumb-item"><a href="{{route('home')}}">Home</a></li>
-                    <li class="breadcrumb-item active">Profile</li>
+                    <li class="breadcrumb-item active">Logo</li>
                     </ol>
                 </div><!-- /.col -->
             </div><!-- /.row -->
@@ -29,42 +26,37 @@
         <!-- Main row -->
         <div class="row">
             <!-- Left col -->
-            <section class="col-md-4 offset-md-4">
+            <section class="col-md-12">
             <!-- Custom tabs (Charts with tabs)-->
             <div class="card">
                 <div class="card-header">
-                    <h3>Profile</h3>
+                    <h3>Logo List</h3>
+                    @if ($countLogo<1)
+                    <a class="btn btn-success float-right btn-sm" href="{{route('logos.create')}}"><i class="fa fa-plus-circle">Create Logo</i></a>
+                    @endif
                 </div><!-- /.card-header -->
                 <div class="card-body">
-                    <div class="card card-primary card-outline">
-                        <div class="card-body box-profile">
-                          <div class="text-center">
-                            <img class="profile-user-img img-fluid img-circle" src="{{!empty($user->image)?url('/school/public/upload/user_image/'.$user->image):url('/upload/no_image.jpg/')}}" alt="User profile picture">
-                          </div>
-
-                          <h3 class="profile-username text-center">{{$user->name}}</h3>
-
-                          <p class="text-muted text-center">{{$user->address}}</p>
-                          <table width="100%" class="table table-bordered">
-                              <tbody>
-                                  <tr>
-                                      <td><b>Mobile No:</b></td>
-                                      <td>{{$user->mobile}}</td>
-                                  </tr>
-                                  <tr>
-                                    <td><b>Email:</b></td>
-                                    <td>{{$user->email}}</td>
-                                  </tr>
-                                  <tr>
-                                    <td><b>Gender:</b></td>
-                                    <td>{{$user->gender}}</td>
-                                </tr>
-                              </tbody>
-                          </table>
-                          <a href="{{route('profiles.edit')}}" class="btn btn-primary btn-block"><b>Edit Profile</b></a>
-                        </div>
-                        <!-- /.card-body -->
-                      </div>
+                    <table id="example1" class="table table-bordered table-hover">
+                        <thead>
+                            <tr>
+                                <th>Serial</th>
+                                <th>Role</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach ($logos as $key=>$logo)
+                            <tr>
+                                <td>{{$key+1}}</td>
+                                <td><img src="{{!empty($logo->image) ? url('/school/public/upload/logo_image/'.$logo->image):url('/upload/no_image.jpg')}}" width="120px" height="130px"></td>
+                                <td>
+                                    <a title="Edit" href="{{route('logos.edit',$logo->id)}}" class="btn btn-sm btn-primary"><i class="fa fa-edit"></i></a>
+                                    <a title="Delete" href="{{route('logos.delete',$logo->id)}}" class="btn btn-sm btn-danger" id="delete"><i class="fas fa-trash"></i></a>
+                                </td>
+                            </tr>
+                            @endforeach
+                        </tbody>
+                    </table>
                 </div><!-- /.card-body -->
             </div>
             <!-- /.card -->

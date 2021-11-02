@@ -49,14 +49,9 @@ class UserController extends Controller
         $user->name = $request->name ;
         $user->usertype = $request->usertype ;
         $user->email = $request->email ;
-        $user->password = $request->password;
+        $user->password = Hash::make($request->password);
         // $user_save = $user->save();
         $user->save();
-        // $notifications = array(
-        //                        'message'=>'You Added '.$request->package_name.'package',
-        //                        'alert-type'=>'success'
-        //                     );
-        // return redirect()->back()->with($notifications);
         return redirect()->route('users.view')->with('success','You Added User');
     }
 
@@ -124,7 +119,7 @@ class UserController extends Controller
         //$notifications = array('message'=>'You Deleted these package','alert-type'=>'error');
         if($user)
         {
-            return redirect()->route('users.view')->with('fail','Delete these guy');
+            return redirect()->route('users.view')->with('error','Delete these guy');
             //return redirect()->back()->with($notifications);
         }
     }

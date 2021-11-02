@@ -19,7 +19,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-xs-2">
-                    <div id="fh5co-logo"><a href="index.html"></a></div>
+                    <div id="fh5co-logo" ><a href="index.html"><img src="{{url('/school/public/upload/logo_image/'.$logo->image)}}"  style="height: 40px; width:160px;" alt=""></a></div>
                 </div>
                 <div class="col-xs-10 text-right menu-1">
                     <ul>

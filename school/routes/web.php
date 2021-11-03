@@ -85,6 +85,12 @@ Route::group(['middleware'=>'auth'],function () {
         Route::post('/student/shift/create',[\App\Http\Controllers\Admin\Setup\ShiftController::class,'store'])->name('setups.student.shift.store');
         Route::put('/student/shift/update/{id}',[\App\Http\Controllers\Admin\Setup\ShiftController::class,'update'])->name('setups.student.shift.update');
         /*Shift*/
+
+        /*Fee Category*/
+        Route::get('/student/category/view',[\App\Http\Controllers\Admin\Setup\FeeCategoryController::class,'index'])->name('setups.student.category.view');
+        Route::post('/student/category/create',[\App\Http\Controllers\Admin\Setup\FeeCategoryController::class,'store'])->name('setups.student.category.store');
+        Route::put('/student/category/update/{id}',[\App\Http\Controllers\Admin\Setup\FeeCategoryController::class,'update'])->name('setups.student.category.update');
+        /*Fee Category*/
     });
 
 });

@@ -33,7 +33,7 @@
                     <h3>
                        Add Year
                     </h3>
-                    <a class="btn btn-success float-right btn-sm" href="{{route('setups.student.year.view')}}"><i class="fa fa-list"> Student Class List</i></a>
+                    <a class="btn btn-success float-right btn-sm" href="{{route('setups.student.year.view')}}"><i class="fa fa-list"> Year List</i></a>
                 </div><!-- /.card-header -->
                 <div class="card-body">
                     <div class="card">

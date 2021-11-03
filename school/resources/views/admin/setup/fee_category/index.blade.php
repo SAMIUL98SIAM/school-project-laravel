@@ -42,7 +42,7 @@
                                     </button>
                                 </div>
                                 <div class="modal-body">
-                                    <form method="post" action="{{ route('setups.student.category.store') }}" id="myForm">
+                                    <form method="post" action="{{ route('setups.fee.category.store') }}" id="myForm">
                                         @csrf
                                         <div class="form-group">
                                             <label class="name">Fee Category Name</label>
@@ -88,7 +88,7 @@
                                                     </button>
                                                 </div>
                                                 <div class="modal-body">
-                                                    <form method="post" action="{{ route('setups.student.category.update',$category->id) }}">
+                                                    <form method="post" action="{{ route('setups.fee.category.update',$category->id) }}">
                                                         @csrf
                                                         @method('PUT')
                                                         <div class="form-group">

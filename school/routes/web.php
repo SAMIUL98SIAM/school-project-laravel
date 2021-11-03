@@ -87,10 +87,22 @@ Route::group(['middleware'=>'auth'],function () {
         /*Shift*/
 
         /*Fee Category*/
-        Route::get('/student/category/view',[\App\Http\Controllers\Admin\Setup\FeeCategoryController::class,'index'])->name('setups.student.category.view');
-        Route::post('/student/category/create',[\App\Http\Controllers\Admin\Setup\FeeCategoryController::class,'store'])->name('setups.student.category.store');
-        Route::put('/student/category/update/{id}',[\App\Http\Controllers\Admin\Setup\FeeCategoryController::class,'update'])->name('setups.student.category.update');
+        Route::get('/fee/category/view',[\App\Http\Controllers\Admin\Setup\FeeCategoryController::class,'index'])->name('setups.fee.category.view');
+        Route::post('/fee/category/create',[\App\Http\Controllers\Admin\Setup\FeeCategoryController::class,'store'])->name('setups.fee.category.store');
+        Route::put('/fee/category/update/{id}',[\App\Http\Controllers\Admin\Setup\FeeCategoryController::class,'update'])->name('setups.fee.category.update');
         /*Fee Category*/
+
+        /*Fee Category Amount*/
+        Route::get('/fee/amount/view',[\App\Http\Controllers\Admin\Setup\FeeAmountController::class,'index'])->name('setups.fee.amount.view');
+        Route::get('/fee/amount/create',[\App\Http\Controllers\Admin\Setup\FeeAmountController::class,'create'])->name('setups.fee.amount.create');
+        Route::post('/fee/amount/create',[\App\Http\Controllers\Admin\Setup\FeeAmountController::class,'store'])->name('setups.fee.amount.store');
+        Route::get('/fee/amount/edit/{id}',[\App\Http\Controllers\Admin\Setup\FeeAmountController::class,'edit'])->name('setups.fee.amount.edit');
+        Route::post('/fee/amount/update/{id}',[\App\Http\Controllers\Admin\Setup\FeeAmountController::class,'update'])->name('setups.fee.amount.update');
+        Route::get('/fee/amount/delete/{id}',[\App\Http\Controllers\Admin\Setup\FeeAmountController::class,'destroy'])->name('setups.fee.amount.delete');
+        Route::get('/fee/amount/details/{id}',[\App\Http\Controllers\Admin\Setup\FeeAmountController::class,'show'])->name('setups.fee.amount.details');
+        /*Fee Category Amount*/
+
+
     });
 
 });

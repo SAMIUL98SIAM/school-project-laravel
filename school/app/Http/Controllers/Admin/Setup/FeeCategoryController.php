@@ -43,7 +43,7 @@ class FeeCategoryController extends Controller
         $data = new FeeCategory();
         $data->name = $request->name;
         $data->save();
-        return redirect()->route('setups.student.category.view')->with('success','Fee Category Added Successfully');
+        return redirect()->route('setups.fee.category.view')->with('success','Fee Category Added Successfully');
     }
 
     /**
@@ -86,10 +86,10 @@ class FeeCategoryController extends Controller
         $update_class  = $class->save();
         if($update_class)
         {
-            return redirect()->route('setups.student.category.view')->with('success','Fee Category Updated Successfully');
+            return redirect()->route('setups.fee.category.view')->with('success','Fee Category Updated Successfully');
         }
         else{
-            return redirect()->route('setups.student.category.view')->with('error','Updated same classs Year');
+            return redirect()->route('setups.fee.category.view')->with('error','Updated same classs Year');
         }
 
     }

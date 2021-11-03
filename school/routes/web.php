@@ -49,13 +49,42 @@ Route::group(['middleware'=>'auth'],function () {
 
     Route::prefix('logos')->group(function(){
         Route::get('/view',[\App\Http\Controllers\Admin\LogoController::class,'index'])->name('logos.view');
-
         Route::get('/create',[\App\Http\Controllers\Admin\LogoController::class,'create'])->name('logos.create');
         Route::post('/create',[\App\Http\Controllers\Admin\LogoController::class,'store'])->name('logos.store');
-
         Route::get('/edit/{id}',[\App\Http\Controllers\Admin\LogoController::class,'edit'])->name('logos.edit');
         Route::post('/update/{id}',[\App\Http\Controllers\Admin\LogoController::class,'update'])->name('logos.update');
         Route::get('/delete/{id}',[\App\Http\Controllers\Admin\LogoController::class,'destroy'])->name('logos.delete');
+    });
+
+    Route::prefix('setups')->group(function(){
+        /*Student Class*/
+        Route::get('/student/class/view',[\App\Http\Controllers\Admin\Setup\StudentClassController::class,'index'])->name('setups.student.class.view');
+        Route::get('/student/class/create',[\App\Http\Controllers\Admin\Setup\StudentClassController::class,'create'])->name('setups.student.class.create');
+        Route::post('/student/class/create',[\App\Http\Controllers\Admin\Setup\StudentClassController::class,'store'])->name('setups.student.class.store');
+        Route::put('/student/class/update/{id}',[\App\Http\Controllers\Admin\Setup\StudentClassController::class,'update'])->name('setups.student.class.update');
+        Route::get('/student/class/delete/{id}',[\App\Http\Controllers\Admin\Setup\StudentClassController::class,'destroy'])->name('setups.student.class.delete');
+        /*Student Class*/
+
+        /*Year*/
+        Route::get('/student/year/view',[\App\Http\Controllers\Admin\Setup\YearController::class,'index'])->name('setups.student.year.view');
+        Route::get('/student/year/create',[\App\Http\Controllers\Admin\Setup\YearController::class,'create'])->name('setups.student.year.create');
+        Route::post('/student/year/create',[\App\Http\Controllers\Admin\Setup\YearController::class,'store'])->name('setups.student.year.store');
+        Route::put('/student/year/update/{id}',[\App\Http\Controllers\Admin\Setup\YearController::class,'update'])->name('setups.student.year.update');
+        /*Year*/
+
+
+        /*Group*/
+        Route::get('/student/group/view',[\App\Http\Controllers\Admin\Setup\GroupController::class,'index'])->name('setups.student.group.view');
+        Route::get('/student/group/create',[\App\Http\Controllers\Admin\Setup\GroupController::class,'create'])->name('setups.student.group.create');
+        Route::post('/student/group/create',[\App\Http\Controllers\Admin\Setup\GroupController::class,'store'])->name('setups.student.group.store');
+        Route::put('/student/group/update/{id}',[\App\Http\Controllers\Admin\Setup\GroupController::class,'update'])->name('setups.student.group.update');
+        /*Group*/
+
+        /*Shift*/
+        Route::get('/student/shift/view',[\App\Http\Controllers\Admin\Setup\ShiftController::class,'index'])->name('setups.student.shift.view');
+        Route::post('/student/shift/create',[\App\Http\Controllers\Admin\Setup\ShiftController::class,'store'])->name('setups.student.shift.store');
+        Route::put('/student/shift/update/{id}',[\App\Http\Controllers\Admin\Setup\ShiftController::class,'update'])->name('setups.student.shift.update');
+        /*Shift*/
     });
 
 });

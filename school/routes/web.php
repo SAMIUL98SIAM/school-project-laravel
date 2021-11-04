@@ -25,6 +25,9 @@ Route::get('/about', [App\Http\Controllers\Frontend\FrontendController::class, '
 Route::get('/pricing', [App\Http\Controllers\Frontend\FrontendController::class, 'pricing'])->name('frontend.layouts.pricing');
 Route::get('/blog', [App\Http\Controllers\Frontend\FrontendController::class, 'blog'])->name('frontend.layouts.blog');
 Route::get('/contact', [App\Http\Controllers\Frontend\FrontendController::class, 'contact'])->name('frontend.layouts.contact');
+Route::post('/contact', [App\Http\Controllers\Frontend\FrontendController::class, 'contact_store'])->name('frontend.layouts.contact.store');
+
+
 
 Auth::routes();
 
@@ -101,6 +104,30 @@ Route::group(['middleware'=>'auth'],function () {
         Route::get('/fee/amount/delete/{id}',[\App\Http\Controllers\Admin\Setup\FeeAmountController::class,'destroy'])->name('setups.fee.amount.delete');
         Route::get('/fee/amount/details/{id}',[\App\Http\Controllers\Admin\Setup\FeeAmountController::class,'show'])->name('setups.fee.amount.details');
         /*Fee Category Amount*/
+
+
+        /*Exam Type*/
+        Route::get('/exam/type/view',[\App\Http\Controllers\Admin\Setup\ExamTypeController::class,'index'])->name('setups.exam.type.view');
+        Route::post('/exam/type/create',[\App\Http\Controllers\Admin\Setup\ExamTypeController::class,'store'])->name('setups.exam.type.store');
+        Route::put('/exam/type/update/{id}',[\App\Http\Controllers\Admin\Setup\ExamTypeController::class,'update'])->name('setups.exam.type.update');
+        /*Exam Type*/
+
+        /*Subject*/
+        Route::get('/subject/view',[\App\Http\Controllers\Admin\Setup\SubjectController::class,'index'])->name('setups.subject.view');
+        Route::post('/subject/create',[\App\Http\Controllers\Admin\Setup\SubjectController::class,'store'])->name('setups.subject.store');
+        Route::put('/subject/update/{id}',[\App\Http\Controllers\Admin\Setup\SubjectController::class,'update'])->name('setups.subject.update');
+        /*Subject*/
+
+
+        /*Assign Subject*/
+        Route::get('/assign/subject/view',[\App\Http\Controllers\Admin\Setup\FeeAmountController::class,'index'])->name('setups.assign.subject.view');
+        Route::get('/assign/subject/create',[\App\Http\Controllers\Admin\Setup\FeeAmountController::class,'create'])->name('setups.assign.subject.create');
+        Route::post('/assign/subject/create',[\App\Http\Controllers\Admin\Setup\FeeAmountController::class,'store'])->name('setups.assign.subject.store');
+        Route::get('/assign/subject/edit/{id}',[\App\Http\Controllers\Admin\Setup\FeeAmountController::class,'edit'])->name('setups.assign.subject.edit');
+        Route::post('/assign/subject/update/{id}',[\App\Http\Controllers\Admin\Setup\FeeAmountController::class,'update'])->name('setups.assign.subject.update');
+        Route::get('/assign/subject/delete/{id}',[\App\Http\Controllers\Admin\Setup\FeeAmountController::class,'destroy'])->name('setups.assign.subject.delete');
+        Route::get('/assign/subject/details/{id}',[\App\Http\Controllers\Admin\Setup\FeeAmountController::class,'show'])->name('setups.assign.subject.details');
+        /*Assign Subject*/
 
 
     });

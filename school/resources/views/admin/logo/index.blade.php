@@ -41,6 +41,8 @@
                             <tr>
                                 <th>Serial</th>
                                 <th>Role</th>
+                                <th>Created By</th>
+                                {{-- <th>Updated by</th> --}}
                                 <th>Action</th>
                             </tr>
                         </thead>
@@ -49,6 +51,8 @@
                             <tr>
                                 <td>{{$key+1}}</td>
                                 <td><img src="{{!empty($logo->image) ? url('/school/public/upload/logo_image/'.$logo->image):url('/upload/no_image.jpg')}}" width="120px" height="130px"></td>
+                                <td>{{$logo->created_by}}</td>
+                                {{-- <td>{{$logo->updated_by}}</td> --}}
                                 <td>
                                     <a title="Edit" href="{{route('logos.edit',$logo->id)}}" class="btn btn-sm btn-primary"><i class="fa fa-edit"></i></a>
                                     <a title="Delete" href="{{route('logos.delete',$logo->id)}}" class="btn btn-sm btn-danger" id="delete"><i class="fas fa-trash"></i></a>

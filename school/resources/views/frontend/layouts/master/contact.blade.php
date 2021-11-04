@@ -39,36 +39,43 @@
                 </div>
                 <div class="col-md-6 animate-box">
                     <h3>Get In Touch</h3>
-                    <form action="#">
+                    @if (Session::get('success'))
+                        <div class="alert alert-success alert-dismissible">
+                            <button type="button" class="close" data-dismiss="alert">&times;</button>
+                                <strong>{{Session::get('success')}}</strong>
+                        </div>
+                    @endif
+                    <form method="POST" action="{{route('frontend.layouts.contact.store')}}">
+                        @csrf
                         <div class="row form-group">
                             <div class="col-md-6">
                                 <!-- <label for="fname">First Name</label> -->
-                                <input type="text" id="fname" class="form-control" placeholder="Your firstname">
+                                <input type="text" name="fname" id="fname" class="form-control" placeholder="Your firstname" required>
                             </div>
                             <div class="col-md-6">
                                 <!-- <label for="lname">Last Name</label> -->
-                                <input type="text" id="lname" class="form-control" placeholder="Your lastname">
+                                <input type="text" name="lname" id="lname" class="form-control" placeholder="Your lastname" required>
                             </div>
                         </div>
 
                         <div class="row form-group">
                             <div class="col-md-12">
                                 <!-- <label for="email">Email</label> -->
-                                <input type="text" id="email" class="form-control" placeholder="Your email address">
+                                <input type="text" name="email" id="email" class="form-control" placeholder="Your email address" required>
                             </div>
                         </div>
 
                         <div class="row form-group">
                             <div class="col-md-12">
                                 <!-- <label for="subject">Subject</label> -->
-                                <input type="text" id="subject" class="form-control" placeholder="Your subject of this message">
+                                <input type="text" name="subject" id="subject" class="form-control" placeholder="Your subject of this message" required>
                             </div>
                         </div>
 
                         <div class="row form-group">
                             <div class="col-md-12">
                                 <!-- <label for="message">Message</label> -->
-                                <textarea name="message" id="message" cols="30" rows="10" class="form-control" placeholder="Say something about us"></textarea>
+                                <textarea name="message" id="message" cols="30" rows="10" class="form-control" placeholder="Say something about us" required></textarea>
                             </div>
                         </div>
                         <div class="form-group">

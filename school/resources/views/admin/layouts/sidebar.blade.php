@@ -142,6 +142,27 @@
                     </a>
                   </li>
 
+                  <li class="nav-item">
+                    <a href="{{route('setups.exam.type.view')}}" class="nav-link {{$route=='setups.exam.type.view'?'active':''}}">
+                      <i class="far fa-circle nav-icon"></i>
+                      <p>Exam Type</p>
+                    </a>
+                  </li>
+
+                  <li class="nav-item">
+                    <a href="{{route('setups.subject.view')}}" class="nav-link {{$route=='setups.subject.view'?'active':''}}">
+                      <i class="far fa-circle nav-icon"></i>
+                      <p>View Subject</p>
+                    </a>
+                  </li>
+
+                  <li class="nav-item">
+                    <a href="{{route('setups.assign.subject.view')}}" class="nav-link {{$route=='setups.assign.subject.view'?'active':''}}">
+                      <i class="far fa-circle nav-icon"></i>
+                      <p>Assign Subject</p>
+                    </a>
+                  </li>
+
                 </ul>
             </li>
         </ul>

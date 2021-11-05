@@ -120,13 +120,13 @@ Route::group(['middleware'=>'auth'],function () {
 
 
         /*Assign Subject*/
-        Route::get('/assign/subject/view',[\App\Http\Controllers\Admin\Setup\FeeAmountController::class,'index'])->name('setups.assign.subject.view');
-        Route::get('/assign/subject/create',[\App\Http\Controllers\Admin\Setup\FeeAmountController::class,'create'])->name('setups.assign.subject.create');
-        Route::post('/assign/subject/create',[\App\Http\Controllers\Admin\Setup\FeeAmountController::class,'store'])->name('setups.assign.subject.store');
-        Route::get('/assign/subject/edit/{id}',[\App\Http\Controllers\Admin\Setup\FeeAmountController::class,'edit'])->name('setups.assign.subject.edit');
-        Route::post('/assign/subject/update/{id}',[\App\Http\Controllers\Admin\Setup\FeeAmountController::class,'update'])->name('setups.assign.subject.update');
-        Route::get('/assign/subject/delete/{id}',[\App\Http\Controllers\Admin\Setup\FeeAmountController::class,'destroy'])->name('setups.assign.subject.delete');
-        Route::get('/assign/subject/details/{id}',[\App\Http\Controllers\Admin\Setup\FeeAmountController::class,'show'])->name('setups.assign.subject.details');
+        Route::get('/assign/subject/view',[\App\Http\Controllers\Admin\Setup\AssignSubjectController::class,'index'])->name('setups.assign.subject.view');
+        Route::get('/assign/subject/create',[\App\Http\Controllers\Admin\Setup\AssignSubjectController::class,'create'])->name('setups.assign.subject.create');
+        Route::post('/assign/subject/create',[\App\Http\Controllers\Admin\Setup\AssignSubjectController::class,'store'])->name('setups.assign.subject.store');
+        Route::get('/assign/subject/edit/{class_id}',[\App\Http\Controllers\Admin\Setup\AssignSubjectController::class,'edit'])->name('setups.assign.subject.edit');
+        Route::post('/assign/subject/update/{id}',[\App\Http\Controllers\Admin\Setup\AssignSubjectController::class,'update'])->name('setups.assign.subject.update');
+        Route::get('/assign/subject/delete/{id}',[\App\Http\Controllers\Admin\Setup\AssignSubjectController::class,'destroy'])->name('setups.assign.subject.delete');
+        Route::get('/assign/subject/details/{id}',[\App\Http\Controllers\Admin\Setup\AssignSubjectController::class,'show'])->name('setups.assign.subject.details');
         /*Assign Subject*/
 
 

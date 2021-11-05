@@ -130,6 +130,12 @@ Route::group(['middleware'=>'auth'],function () {
         /*Assign Subject*/
 
 
+         /*Subject*/
+         Route::get('/designation/view',[\App\Http\Controllers\Admin\Setup\DesignationController::class,'index'])->name('setups.designation.view');
+         Route::post('/designation/create',[\App\Http\Controllers\Admin\Setup\DesignationController::class,'store'])->name('setups.designation.store');
+         Route::put('/designation/update/{id}',[\App\Http\Controllers\Admin\Setup\DesignationController::class,'update'])->name('setups.designation.update');
+         /*Subject*/
+
     });
 
 });

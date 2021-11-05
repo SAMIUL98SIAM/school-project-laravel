@@ -33,7 +33,7 @@
                     <h3>
                         Fee Amount Details
                     </h3>
-                    <a class="btn btn-success float-right btn-sm" href="{{route('setups.assign.subject.view')}}"><i class="fa fa-list"> Fee Amount List</i></a>
+                    <a class="btn btn-success float-right btn-sm" href="{{route('setups.assign.subject.view')}}"><i class="fa fa-list"> Assign Subject List</i></a>
                 </div><!-- /.card-header -->
                 <div class="card-body">
                     <h4><strong>Classs Name: </strong>{{$editData['0']['student_class']['name']}}</h4>

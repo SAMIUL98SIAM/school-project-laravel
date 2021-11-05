@@ -7,7 +7,7 @@
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1 class="m-0">Manage Exam Type</h1>
+                    <h1 class="m-0">Manage Designation</h1>
                 </div><!-- /.col -->
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
@@ -31,21 +31,21 @@
             <div class="card">
                 <div class="card-header">
                     <h3>Exam Type List</h3>
-                    <button class="btn btn-success float-right btn-sm" data-toggle="modal" data-target="#basicModal"><i class="fa fa-plus-circle"> Add Exam Type</i></button>
+                    <button class="btn btn-success float-right btn-sm" data-toggle="modal" data-target="#basicModal"><i class="fa fa-plus-circle"> Add Designation</i></button>
                     <!--Create Modal--->
                     <div class="modal fade" id="basicModal">
                         <div style="color: #000" class="modal-dialog" role="document">
                             <div class="modal-content">
                                 <div class="modal-header">
-                                    <h5 class="modal-title">Create Exam Type</h5>
+                                    <h5 class="modal-title">Create Designation</h5>
                                     <button type="button" class="close" data-dismiss="modal"><span>&times;</span>
                                     </button>
                                 </div>
                                 <div class="modal-body">
-                                    <form method="post" action="{{ route('setups.exam.type.store') }}" id="myForm">
+                                    <form method="post" action="{{ route('setups.designation.store') }}" id="myForm">
                                         @csrf
                                         <div class="form-group">
-                                            <label class="name">Exam Type Name</label>
+                                            <label class="name">Designation Name</label>
                                             <input type="text" name="name" id="name" value="{{old('name')}}" class="form-control" placeholder="User Name">
                                             {{-- <font style="color:red;">
                                                 {{($errors->has('name'))?($errors->first('name')):''}}
@@ -67,15 +67,15 @@
                         <thead>
                             <tr>
                                 <th>Serial</th>
-                                <th>Exam Type Name</th>
+                                <th>Designation Name</th>
                                 <th>Action</th>
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach ($allData as $key=>$exam)
+                            @foreach ($allData as $key=>$designation)
                             <tr>
                                 <td>{{$key+1}}</td>
-                                <td>{{$exam->name}}</td>
+                                <td>{{$designation->name}}</td>
                                 <td>
                                     <button title="Edit" class="btn btn-sm btn-primary"  data-toggle="modal" data-target="#editModal{{$key}}"><i class="fa fa-edit"></i></button>
                                     {{--Edit Modal--}}
@@ -83,18 +83,18 @@
                                         <div class="modal-dialog" role="document">
                                             <div class="modal-content">
                                                 <div class="modal-header">
-                                                    <h5 class="modal-title">Edit Exam Type</h5>
+                                                    <h5 class="modal-title">Edit Designation</h5>
                                                     <button type="button" class="close" data-dismiss="modal"><span>&times;</span>
                                                     </button>
                                                 </div>
                                                 <div class="modal-body">
-                                                    <form method="post" action="{{ route('setups.exam.type.update',$exam->id) }}">
+                                                    <form method="post" action="{{ route('setups.designation.update',$designation->id) }}">
                                                         @csrf
                                                         @method('PUT')
 
                                                         <div class="form-group">
                                                             <label class="package_name">Name</label>
-                                                            <input type="text" name="name" class="form-control" required="" value="{{ $exam->name }}">
+                                                            <input type="text" name="name" class="form-control" required="" value="{{ $designation->name }}">
                                                         </div>
                                                         <div class="modal-footer">
                                                             <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>

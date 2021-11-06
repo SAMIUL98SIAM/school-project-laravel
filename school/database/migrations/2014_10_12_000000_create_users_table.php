@@ -24,7 +24,19 @@ class CreateUsersTable extends Migration
             $table->string('address')->nullable();
             $table->string('gender')->nullable();
             $table->string('image')->nullable();
-            $table->tinyInteger('status')->default(1);
+
+            $table->string('fname')->nullable();
+            $table->string('mname')->nullable();
+            $table->string('religion')->unique();
+            $table->string('id_no')->nullable();
+            $table->string('dob')->nullable();
+            $table->string('code')->nullable();
+            $table->string('role')->nullable()->comment('admin=head of software,operator=computer operator,user = employee');
+            $table->date('join_date')->nullable();
+            $table->integer('designation_id')->nullable();
+            $table->double('salary')->nullable();
+
+            $table->tinyInteger('status')->default(1)->comment('0=inactive,1=active');
             $table->rememberToken();
             $table->timestamps();
         });

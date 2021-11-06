@@ -16,7 +16,8 @@ class UserController extends Controller
      */
     public function index()
     {
-        $data['allData']= User::all();
+        $data['allData']= User::where('usertype','admin')->get();
+        // $data['allData']= User::all();
         return view('admin.user.index',$data);
     }
 
@@ -40,16 +41,16 @@ class UserController extends Controller
     {
         $validatedData = $request->validate([
             'name'=> 'required',
-            'usertype'=> 'required',
-            'email'=>'required|unique:users,email',
-            'password'=>'required'
+            'email'=>'required|unique:users,email'
         ]);
-
+        $code = rand(0000,9999);
         $user = new User() ;
         $user->name = $request->name ;
-        $user->usertype = $request->usertype ;
+        $user->role = $request->role ;
+        $user->usertype = "admin" ;
         $user->email = $request->email ;
-        $user->password = Hash::make($request->password);
+        $user->password = Hash::make($code);
+        $user->code = $code;
         // $user_save = $user->save();
         $user->save();
         return redirect()->route('users.view')->with('success','You Added User');
@@ -88,22 +89,15 @@ class UserController extends Controller
     {
         $validatedData = $request->validate([
             'name'=> 'required',
-            'usertype'=> 'required',
             'email'=>'required'
         ]);
 
         $user = User::find($id) ;
         $user->name = $request->name ;
-        $user->usertype = $request->usertype ;
+        $user->role = $request->role ;
         $user->email = $request->email ;
         $user->password = $request->password;
-        // $user_save = $user->save();
         $user->save();
-        // $notifications = array(
-        //                        'message'=>'You Added '.$request->package_name.'package',
-        //                        'alert-type'=>'success'
-        //                     );
-        // return redirect()->back()->with($notifications);
         return redirect()->route('users.view')->with('success','User updated successfully');
     }
 
@@ -116,11 +110,9 @@ class UserController extends Controller
     public function destroy($id)
     {
         $user =  User::destroy($id);
-        //$notifications = array('message'=>'You Deleted these package','alert-type'=>'error');
         if($user)
         {
             return redirect()->route('users.view')->with('error','Delete these guy');
-            //return redirect()->back()->with($notifications);
         }
     }
 }

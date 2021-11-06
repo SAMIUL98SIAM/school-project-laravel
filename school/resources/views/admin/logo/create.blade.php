@@ -38,7 +38,6 @@
                            <form method="post" action="{{ route('logos.store') }}" id="myForm" enctype="multipart/form-data">
                             <div class="row">
                                 @csrf
-
                                 <div class="col-5">
                                     <label class="image">Image</label>
                                     <input type="file" name="image" class="form-control" id="image">

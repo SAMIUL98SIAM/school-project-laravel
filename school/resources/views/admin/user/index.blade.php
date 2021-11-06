@@ -45,38 +45,29 @@
                                     <form method="post" action="{{ route('users.store') }}" id="myForm">
                                         @csrf
                                         <div class="form-group">
-                                            <label class="usertype">User Role</label>
-                                            <select name="usertype" id="usertype" class="form-control">
+                                            <label class="role">User Role</label>
+                                            <select name="role" id="role" class="form-control">
                                                 <option value="">Select Role</option>
                                                 <option value="Admin">Admin</option>
-                                                <option value="Manager">Manager</option>
+                                                <option value="Operator">Operator</option>
                                             </select>
-                                            {{-- <font style="color:red;">
-                                                {{($errors->has('usertype'))?($errors->first('usertype')):''}}
-                                            </font> --}}
                                         </div>
                                         <div class="form-group">
                                             <label class="name">User Name</label>
                                             <input type="text" name="name" id="name" value="{{old('name')}}" class="form-control" placeholder="User Name">
-                                            {{-- <font style="color:red;">
-                                                {{($errors->has('name'))?($errors->first('name')):''}}
-                                            </font> --}}
                                         </div>
                                         <div class="form-group">
                                             <label class="email">Email</label>
                                             <input type="email" name="email" id="email" value="{{old('email')}}" class="form-control" placeholder="Email">
                                         </div>
-                                        <div class="form-group">
+                                        {{-- <div class="form-group">
                                             <label class="password">Password</label>
                                             <input type="password" name="password" id="password" value="{{old('password')}}" class="form-control" placeholder="Password">
                                         </div>
                                         <div class="form-group">
                                             <label class="password">Confirm Password</label>
                                             <input type="password" name="password2" id="password2" value="{{old('password2')}}" class="form-control" placeholder="Confirm Password">
-                                            {{-- <font style="color:red;">
-                                                {{($errors->has('password'))?($errors->first('password')):''}}
-                                            </font> --}}
-                                        </div>
+                                        </div> --}}
                                         <div class="modal-footer">
                                             <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                                             <button type="submit" class="btn btn-primary">Add</button>
@@ -96,6 +87,7 @@
                                 <th>Role</th>
                                 <th>Name</th>
                                 <th>Email</th>
+                                <th>Password</th>
                                 <th>Action</th>
                             </tr>
                         </thead>
@@ -103,9 +95,10 @@
                             @foreach ($allData as $key=>$user)
                             <tr>
                                 <td>{{$key+1}}</td>
-                                <td>{{$user->usertype}}</td>
+                                <td>{{$user->role}}</td>
                                 <td>{{$user->name}}</td>
                                 <td>{{$user->email}}</td>
+                                <td>{{$user->code}}</td>
                                 <td>
                                     <button title="Edit" class="btn btn-sm btn-primary"  data-toggle="modal" data-target="#editModal{{$key}}"><i class="fa fa-edit"></i></button>
                                     {{--Edit Modal--}}
@@ -122,15 +115,12 @@
                                                         @csrf
                                                         @method('PUT')
                                                         <div class="form-group">
-                                                            <label class="usertype">User Role</label>
-                                                            <select name="usertype" id="usertype" class="form-control">
+                                                            <label class="role">User Role</label>
+                                                            <select name="role" id="role" class="form-control">
                                                                 <option value="">Select Role</option>
-                                                                <option value="Admin"{{($user->usertype=="Admin")?"selected":""}}>Admin</option>
-                                                                <option value="Manager"{{($user->usertype=="Manager")?"selected":""}}>Manager</option>
+                                                                <option value="Admin"{{($user->role=="Admin")?"selected":""}}>Admin</option>
+                                                                <option value="Operator"{{($user->role=="Operator")?"selected":""}}>Operator</option>
                                                             </select>
-                                                            {{-- <font style="color:red;">
-                                                                {{($errors->has('usertype'))?($errors->first('usertype')):''}}
-                                                            </font> --}}
                                                         </div>
                                                         <div class="form-group">
                                                             <label class="package_name">Name</label>
@@ -180,7 +170,7 @@
     $(function () {
       $('#myForm').validate({
         rules: {
-         usertype: {
+         role: {
               required: true,
           },
           name: {
@@ -201,8 +191,8 @@
 
         },
         messages: {
-          usertype: {
-            required: "Please select a usertype",
+          role: {
+            required: "Please select a role",
           },
           name: {
             required: "Please enter a name",

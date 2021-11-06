@@ -92,36 +92,8 @@
                                         <td>{{$data->student['code']}}</td>
                                     @endif
                                     <td>
-                                        <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#editModal{{ $key }}"><i class="fa fa-edit"></i> </button>
+                                        <a type="button" href="{{route('students.registration.edit',$data->student_id)}}" class="btn btn-primary btn-sm"><i class="fa fa-edit"></i> </a>
                                     </td>
-
-                                    {{--Edit Modal--}}
-                                        <div style="color: #000" class="modal fade" id="editModal{{ $key }}">
-                                            <div class="modal-dialog" role="document">
-                                                <div class="modal-content">
-                                                    <div class="modal-header">
-                                                        <h5 class="modal-title">Edit Student</h5>
-                                                        <button type="button" class="close" data-dismiss="modal"><span>&times;</span>
-                                                        </button>
-                                                    </div>
-                                                    <div class="modal-body">
-                                                        <form method="post" action="{{ route('students.registration.update',$data->id) }}">
-                                                            @csrf
-                                                            @method('PUT')
-                                                            <div class="form-group">
-                                                                <label class="name">Name</label>
-                                                                <input type="text" name="name" class="form-control" required="" value="{{ $data->name }}">
-                                                            </div>
-                                                            <div class="modal-footer">
-                                                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                                                <button type="submit" class="btn btn-primary">Update</button>
-                                                            </div>
-                                                        </form>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    {{--Edit Modal--}}
                                 </tr>
                                 @endforeach
                             </tbody>
@@ -157,36 +129,8 @@
                                         <td>{{$data->student['code']}}</td>
                                     @endif
                                     <td>
-                                        <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#editModal{{ $key }}"><i class="fa fa-edit"></i> </button>
+                                        <a type="button" href="{{route('students.registration.edit',$data->student_id)}}" class="btn btn-primary btn-sm"><i class="fa fa-edit"></i> </a>
                                     </td>
-
-                                    {{--Edit Modal--}}
-                                        <div style="color: #000" class="modal fade" id="editModal{{ $key }}">
-                                            <div class="modal-dialog" role="document">
-                                                <div class="modal-content">
-                                                    <div class="modal-header">
-                                                        <h5 class="modal-title">Edit Student</h5>
-                                                        <button type="button" class="close" data-dismiss="modal"><span>&times;</span>
-                                                        </button>
-                                                    </div>
-                                                    <div class="modal-body">
-                                                        <form method="post" action="{{ route('students.registration.update',$data->id) }}">
-                                                            @csrf
-                                                            @method('PUT')
-                                                            <div class="form-group">
-                                                                <label class="name">Name</label>
-                                                                <input type="text" name="name" class="form-control" required="" value="{{ $data->name }}">
-                                                            </div>
-                                                            <div class="modal-footer">
-                                                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                                                <button type="submit" class="btn btn-primary">Update</button>
-                                                            </div>
-                                                        </form>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    {{--Edit Modal--}}
                                 </tr>
                                 @endforeach
                             </tbody>

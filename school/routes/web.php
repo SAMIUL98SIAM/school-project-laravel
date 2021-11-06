@@ -142,8 +142,8 @@ Route::group(['middleware'=>'auth'],function () {
         Route::get('/reg/view',[\App\Http\Controllers\Admin\Student\StudentRegController::class,'index'])->name('students.registration.view');
         Route::get('/reg/create',[\App\Http\Controllers\Admin\Student\StudentRegController::class,'create'])->name('students.registration.create');
         Route::post('/reg/create',[\App\Http\Controllers\Admin\Student\StudentRegController::class,'store'])->name('students.registration.store');
-        Route::get('/reg/edit/{id}',[\App\Http\Controllers\Admin\Student\StudentRegController::class,'edit'])->name('students.registration.edit');
-        Route::post('/reg/update/{id}',[\App\Http\Controllers\Admin\Student\StudentRegController::class,'update'])->name('students.registration.update');
+        Route::get('/reg/edit/{student_id}',[\App\Http\Controllers\Admin\Student\StudentRegController::class,'edit'])->name('students.registration.edit');
+        Route::post('/reg/update/{student_id}',[\App\Http\Controllers\Admin\Student\StudentRegController::class,'update'])->name('students.registration.update');
         Route::get('/year-class-wise',[\App\Http\Controllers\Admin\Student\StudentRegController::class,'yearClassWise'])->name('students.year.class.wise');
 
     });

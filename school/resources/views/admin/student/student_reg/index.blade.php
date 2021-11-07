@@ -75,7 +75,7 @@
                                     @if(Auth::user()->role=="Admin")
                                     <th>Code</th>
                                     @endif
-                                    <th width="12%">Action</th>
+                                    <th width="14%">Action</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -95,6 +95,9 @@
                                         <a type="button" href="{{route('students.registration.edit',$data->student_id)}}" class="btn btn-primary btn-sm"><i class="fa fa-edit"></i> </a>
 
                                         <a type="button" href="{{route('students.registration.getPromotion',$data->student_id)}}" class="btn btn-primary btn-sm"><i class="fa fa-eye"></i> </a>
+
+
+                                        <a target="_blank" type="button" href="{{route('students.registration.details',$data->student_id)}}" class="btn btn-info btn-sm"><i class="fa fa-check"></i> </a>
                                     </td>
                                 </tr>
                                 @endforeach
@@ -114,7 +117,7 @@
                                     @if(Auth::user()->role=="Admin")
                                     <th>Code</th>
                                     @endif
-                                    <th width="12%">Action</th>
+                                    <th width="14%">Action</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -134,6 +137,8 @@
                                         <a type="button" href="{{route('students.registration.edit',$data->student_id)}}" class="btn btn-primary btn-sm"><i class="fa fa-edit"></i> </a>
 
                                         <a type="button" href="{{route('students.registration.getPromotion',$data->student_id)}}" class="btn btn-primary btn-sm"><i class="fa fa-eye"></i> </a>
+
+                                        <a target="_blank" type="button" href="{{route('students.registration.details',$data->student_id)}}" class="btn btn-info btn-sm"><i class="fa fa-check"></i> </a>
                                     </td>
                                 </tr>
                                 @endforeach

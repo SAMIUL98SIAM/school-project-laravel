@@ -12,6 +12,8 @@ use App\Models\User;
 use App\Models\Year;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\DB;
+// use Illuminate\Support\Facades\PDF;
+use niklasravnsborg\LaravelPdf\Facades\Pdf;
 use Illuminate\Http\Request;
 
 class StudentRegController extends Controller
@@ -280,6 +282,14 @@ class StudentRegController extends Controller
 
         });
         return redirect()->route('students.registration.view')->with('success','student promotion Success Fully successfully');
+    }
+
+    public function details($student_id)
+    {
+        $data['details'] = AssignStudent::with(['student','discount'])->where('student_id',$student_id)->first();
+        $pdf = PDF::loadView('admin.student.student_reg.student_details_pdf', $data);
+        $pdf->SetProtection(['copy','print'],'','pass');
+        return $pdf->stream('document.pdf');
     }
 
 }

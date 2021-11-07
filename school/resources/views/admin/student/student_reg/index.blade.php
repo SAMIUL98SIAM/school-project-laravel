@@ -93,6 +93,8 @@
                                     @endif
                                     <td>
                                         <a type="button" href="{{route('students.registration.edit',$data->student_id)}}" class="btn btn-primary btn-sm"><i class="fa fa-edit"></i> </a>
+
+                                        <a type="button" href="{{route('students.registration.getPromotion',$data->student_id)}}" class="btn btn-primary btn-sm"><i class="fa fa-eye"></i> </a>
                                     </td>
                                 </tr>
                                 @endforeach
@@ -130,6 +132,8 @@
                                     @endif
                                     <td>
                                         <a type="button" href="{{route('students.registration.edit',$data->student_id)}}" class="btn btn-primary btn-sm"><i class="fa fa-edit"></i> </a>
+
+                                        <a type="button" href="{{route('students.registration.getPromotion',$data->student_id)}}" class="btn btn-primary btn-sm"><i class="fa fa-eye"></i> </a>
                                     </td>
                                 </tr>
                                 @endforeach

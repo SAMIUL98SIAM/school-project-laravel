@@ -146,6 +146,9 @@ Route::group(['middleware'=>'auth'],function () {
         Route::post('/reg/update/{student_id}',[\App\Http\Controllers\Admin\Student\StudentRegController::class,'update'])->name('students.registration.update');
         Route::get('/year-class-wise',[\App\Http\Controllers\Admin\Student\StudentRegController::class,'yearClassWise'])->name('students.year.class.wise');
 
+        Route::get('/reg/promotion/{student_id}',[\App\Http\Controllers\Admin\Student\StudentRegController::class,'getPromotion'])->name('students.registration.getPromotion');
+        Route::post('/reg/promotion/{student_id}',[\App\Http\Controllers\Admin\Student\StudentRegController::class,'setPromotion'])->name('students.registration.setPromotion');
+
     });
 
 });

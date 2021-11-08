@@ -139,18 +139,26 @@ Route::group(['middleware'=>'auth'],function () {
     });
 
     Route::prefix('students')->group(function(){
+
+        /*Student Registration*/
         Route::get('/reg/view',[\App\Http\Controllers\Admin\Student\StudentRegController::class,'index'])->name('students.registration.view');
         Route::get('/reg/create',[\App\Http\Controllers\Admin\Student\StudentRegController::class,'create'])->name('students.registration.create');
         Route::post('/reg/create',[\App\Http\Controllers\Admin\Student\StudentRegController::class,'store'])->name('students.registration.store');
         Route::get('/reg/edit/{student_id}',[\App\Http\Controllers\Admin\Student\StudentRegController::class,'edit'])->name('students.registration.edit');
         Route::post('/reg/update/{student_id}',[\App\Http\Controllers\Admin\Student\StudentRegController::class,'update'])->name('students.registration.update');
         Route::get('/year-class-wise',[\App\Http\Controllers\Admin\Student\StudentRegController::class,'yearClassWise'])->name('students.year.class.wise');
-
         Route::get('/reg/promotion/{student_id}',[\App\Http\Controllers\Admin\Student\StudentRegController::class,'getPromotion'])->name('students.registration.getPromotion');
         Route::post('/reg/promotion/{student_id}',[\App\Http\Controllers\Admin\Student\StudentRegController::class,'setPromotion'])->name('students.registration.setPromotion');
-
-
         Route::get('/reg/details/{student_id}',[\App\Http\Controllers\Admin\Student\StudentRegController::class,'details'])->name('students.registration.details');
+        /*Student Registration*/
+
+
+        /*Roll Generate*/
+        Route::get('/roll/view',[\App\Http\Controllers\Admin\Student\StudentRollController::class,'index'])->name('students.roll.view');
+        Route::get('/roll/get',[\App\Http\Controllers\Admin\Student\StudentRollController::class,'get'])->name('students.roll.get');
+        Route::post('/roll/create',[\App\Http\Controllers\Admin\Student\StudentRollController::class,'store'])->name('students.roll.store');
+        /*Roll Generate*/
+
 
     });
 

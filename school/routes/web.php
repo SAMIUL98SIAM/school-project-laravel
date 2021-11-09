@@ -176,9 +176,16 @@ Route::group(['middleware'=>'auth'],function () {
         Route::get('/exam/get-student',[\App\Http\Controllers\Admin\Student\ExamFeeController::class,'getStudent'])->name('students.exam.fee.get');
         Route::get('/exam/fee/playslip',[\App\Http\Controllers\Admin\Student\ExamFeeController::class,'playslip'])->name('students.exam.fee.payslip');
         /*Exam Fee*/
+    });
+    Route::prefix('employees')->group(function(){
 
-
-
+        /*Student Registration*/
+        Route::get('/reg/view',[\App\Http\Controllers\Admin\Employee\EmployeeRegController::class,'index'])->name('employees.registration.view');
+        Route::get('/reg/create',[\App\Http\Controllers\Admin\Employee\EmployeeRegController::class,'create'])->name('employees.registration.create');
+        Route::post('/reg/create',[\App\Http\Controllers\Admin\Employee\EmployeeRegController::class,'store'])->name('employees.registration.store');
+        Route::get('/reg/edit/{employee_id}',[\App\Http\Controllers\Admin\Employee\EmployeeRegController::class,'edit'])->name('employees.registration.edit');
+        Route::post('/reg/update/{employee_id}',[\App\Http\Controllers\Admin\Employee\EmployeeRegController::class,'update'])->name('employees.registration.update');
+        /*Student Registration*/
     });
 
 });

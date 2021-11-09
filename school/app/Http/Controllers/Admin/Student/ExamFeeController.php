@@ -3,15 +3,11 @@
 namespace App\Http\Controllers\Admin\Student;
 use App\Http\Controllers\Controller;
 use App\Models\AssignStudent;
-use App\Models\DiscountStudent;
 use App\Models\FeeCategoryAmount;
 use App\Models\ExamType;
 use App\Models\StudentClass;
 use App\Models\Year;
-use Illuminate\Support\Facades\Hash;
-use Illuminate\Support\Facades\DB;
 use niklasravnsborg\LaravelPdf\Facades\Pdf;
-use phpDocumentor\Reflection\Types\Null_;
 use Illuminate\Http\Request;
 
 class ExamFeeController extends Controller

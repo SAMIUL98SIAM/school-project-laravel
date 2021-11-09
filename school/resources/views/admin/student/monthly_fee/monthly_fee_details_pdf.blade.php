@@ -6,7 +6,7 @@
     <!-- iCheck -->
     <link rel="stylesheet" href="{{asset('/admin/plugins/icheck-bootstrap/icheck-bootstrap.min.css')}}">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Student Registration Fee</title>
+    <title>Student Monthly Fee</title>
     <style type="text/css">
         table{
             border-collapse: collapse;
@@ -77,12 +77,12 @@
                 </table>
             </div>
             <div class="col-md-12 text-center">
-                <h5 style="font-weight: bold;padding-top:-25px">Student Payslip(Student Copy)</h5>
+                <h5 style="font-weight: bold;padding-top:-25px">Student Monthly Fee Payslip(Student Copy)</h5>
             </div>
             <div class="col-md-12">
                 @php
                     $registrationfee =
-                    App\Models\FeeCategoryAmount::where('fee_category_id','1')->where('class_id',$details->class_id)->first();
+                    App\Models\FeeCategoryAmount::where('fee_category_id','2')->where('class_id',$details->class_id)->first();
                     $originalfee = $registrationfee->amount;
                     $discount = $details['discount']['discount'];
                     $discountablefee = $discount/100*$originalfee;
@@ -121,7 +121,7 @@
 
 
                         <tr>
-                            <td style="width:50%">Registration Fee</td>
+                            <td style="width:50%">Monthly Fee</td>
                             <td>{{$originalfee}} TK</td>
                         </tr>
                         <tr>
@@ -129,7 +129,7 @@
                             <td>{{$discount}}%</td>
                         </tr>
                         <tr>
-                            <td style="width:50%">Fee</td>
+                            <td style="width:50%">Fee of {{$month}}</td>
                             <td>{{$finalfee}} TK</td>
                         </tr>
                     </tbody>
@@ -166,7 +166,7 @@
                 </table>
             </div>
             <div class="col-md-12 text-center">
-                <h5 style="font-weight: bold;padding-top:-25px">Student Payslip</h5>
+                <h5 style="font-weight: bold;padding-top:-25px">Student Monthly Fee Payslip</h5>
             </div>
             <div class="col-md-12">
                 @php
@@ -210,7 +210,7 @@
 
 
                         <tr>
-                            <td style="width:50%">Registration Fee</td>
+                            <td style="width:50%">Monthly Fee</td>
                             <td>{{$originalfee}} TK</td>
                         </tr>
                         <tr>
@@ -218,7 +218,7 @@
                             <td>{{$discount}}%</td>
                         </tr>
                         <tr>
-                            <td style="width:50%">Fee</td>
+                            <td style="width:50%">Fee of {{$month}}</td>
                             <td>{{$finalfee}} TK</td>
                         </tr>
                     </tbody>

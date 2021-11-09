@@ -159,12 +159,23 @@ Route::group(['middleware'=>'auth'],function () {
         /*Roll Generate*/
 
 
-          /*Registration Fee*/
-          Route::get('/reg/fee/view',[\App\Http\Controllers\Admin\Student\RegistrationFeeController::class,'index'])->name('students.reg.fee.view');
-          Route::get('/reg/get-student',[\App\Http\Controllers\Admin\Student\RegistrationFeeController::class,'getStudent'])->name('students.reg.fee.get');
-          Route::get('/reg/fee/playslip',[\App\Http\Controllers\Admin\Student\RegistrationFeeController::class,'playslip'])->name('students.reg.fee.payslip');
-          /*Registration Fee*/
+        /*Registration Fee*/
+        Route::get('/reg/fee/view',[\App\Http\Controllers\Admin\Student\RegistrationFeeController::class,'index'])->name('students.reg.fee.view');
+        Route::get('/reg/get-student',[\App\Http\Controllers\Admin\Student\RegistrationFeeController::class,'getStudent'])->name('students.reg.fee.get');
+        Route::get('/reg/fee/playslip',[\App\Http\Controllers\Admin\Student\RegistrationFeeController::class,'playslip'])->name('students.reg.fee.payslip');
+        /*Registration Fee*/
 
+        /*Monthly Fee*/
+        Route::get('/monthly/fee/view',[\App\Http\Controllers\Admin\Student\MonthlyFeeController::class,'index'])->name('students.monthly.fee.view');
+        Route::get('/monthly/get-student',[\App\Http\Controllers\Admin\Student\MonthlyFeeController::class,'getStudent'])->name('students.monthly.fee.get');
+        Route::get('/monthly/fee/playslip',[\App\Http\Controllers\Admin\Student\MonthlyFeeController::class,'playslip'])->name('students.monthly.fee.payslip');
+        /*Monthly Fee*/
+
+        /*Exam Fee*/
+        Route::get('/exam/fee/view',[\App\Http\Controllers\Admin\Student\ExamFeeController::class,'index'])->name('students.exam.fee.view');
+        Route::get('/exam/get-student',[\App\Http\Controllers\Admin\Student\ExamFeeController::class,'getStudent'])->name('students.exam.fee.get');
+        Route::get('/exam/fee/playslip',[\App\Http\Controllers\Admin\Student\ExamFeeController::class,'playslip'])->name('students.exam.fee.payslip');
+        /*Exam Fee*/
 
 
 

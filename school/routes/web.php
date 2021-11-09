@@ -39,7 +39,6 @@ Route::group(['middleware'=>'auth'],function () {
         Route::get('/view',[\App\Http\Controllers\Admin\UserController::class,'index'])->name('users.view');
         Route::get('/create',[\App\Http\Controllers\Admin\UserController::class,'create'])->name('users.create');
         Route::post('/create',[\App\Http\Controllers\Admin\UserController::class,'store'])->name('users.store');
-        //Route::get('/edit/{id}',[\App\Http\Controllers\Admin\UserController::class,'edit'])->name('users.edit');
         Route::put('/update/{id}',[\App\Http\Controllers\Admin\UserController::class,'update'])->name('users.update');
         Route::get('/delete/{id}',[\App\Http\Controllers\Admin\UserController::class,'destroy'])->name('users.delete');
     });
@@ -158,6 +157,15 @@ Route::group(['middleware'=>'auth'],function () {
         Route::get('/roll/get',[\App\Http\Controllers\Admin\Student\StudentRollController::class,'get'])->name('students.roll.get');
         Route::post('/roll/create',[\App\Http\Controllers\Admin\Student\StudentRollController::class,'store'])->name('students.roll.store');
         /*Roll Generate*/
+
+
+          /*Registration Fee*/
+          Route::get('/reg/fee/view',[\App\Http\Controllers\Admin\Student\RegistrationFeeController::class,'index'])->name('students.reg.fee.view');
+          Route::get('/reg/get-student',[\App\Http\Controllers\Admin\Student\RegistrationFeeController::class,'getStudent'])->name('students.reg.fee.get');
+          Route::get('/reg/fee/playslip',[\App\Http\Controllers\Admin\Student\RegistrationFeeController::class,'playslip'])->name('students.reg.fee.payslip');
+          /*Registration Fee*/
+
+
 
 
     });

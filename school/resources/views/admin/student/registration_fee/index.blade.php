@@ -7,12 +7,12 @@
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1 class="m-0">Manage Roll Generate</h1>
+                    <h1 class="m-0">Manage Registration Fee</h1>
                 </div><!-- /.col -->
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
                     <li class="breadcrumb-item"><a href="{{route('home')}}">Home</a></li>
-                    <li class="breadcrumb-item active">Roll Generate</li>
+                    <li class="breadcrumb-item active">Registration Fee</li>
                     </ol>
                 </div><!-- /.col -->
             </div><!-- /.row -->
@@ -33,8 +33,6 @@
                         <h3>Search Criteria</h3>
                     </div><!-- /.card-header -->
                     <div class="card-body">
-                        <form method="POST" action="{{route('students.roll.store')}}" id="myForm">
-                            @csrf
                             <div class="form-row">
                                 <div class="col-4">
                                     <label class="year_id">Year <font style="color: red">*</font></label>
@@ -58,27 +56,25 @@
                                     <a class="btn btn-primary btn-sm" id="search" name="search">Search</a>
                                 </div>
                             </div>
-                            <br/><br/>
-                            <div class="row d-none" id="roll-generate">
-                                <div class="col-md-12">
-                                    <table class="table table-bordered table-striped dt-responsive" style="width: 100%;">
-                                        <thead>
-                                            <tr>
-
-                                                <th>ID NO</th>
-                                                <th>Student Name</th>
-                                                <th>Father's Name</th>
-                                                <th>Gender</th>
-                                                <th>Roll NO</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody id="roll-generate-tr">
-                                        </tbody>
-                                    </table>
-                                </div>
-                            </div>
-                            <button type="submit" class="btn btn-success btn-sm">Roll Generate</button>
-                        </form>
+                    </div>
+                    <div class="card-body">
+                        <div id="DocumentResults"></div>
+                        <script id="document-template" type="text/x-handlebars-template">
+                            <table class="table-sm table-bordered table-striped" style="width: 100%;">
+                                <thead>
+                                    <tr>
+                                        @{{{thsource}}}
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @{{#each this}}
+                                    <tr>
+                                        @{{{tdsource}}}
+                                    </tr>
+                                    @{{/each}}
+                                </tbody>
+                            </table>
+                        </script>
                     </div>
                 </div>
             <!-- /.card -->
@@ -111,50 +107,20 @@
                 return false;
             }
             $.ajax({
-                url: "{{route('students.roll.get')}}",
-                type: "GET",
+                url: "{{route('students.reg.fee.get')}}",
+                type: "get",
                 data: {'year_id':year_id,'class_id':class_id},
+                beforeSend: function(){
+
+                },
                 success: function(data){
-                    $('#roll-generate').removeClass('d-none');
-                    var html = '';
-                    $.each(data,function(key,v){
-                        html +=
-                        '<tr>'+
-                        '<td>'+v.student.id_no+'<input type="hidden" name="student_id[]" value="'+v.student_id+'"></td>'+
-                        '<td>'+v.student.name+'</td>'+
-                        '<td>'+v.student.fname+'</td>'+
-                        '<td>'+v.student.gender+'</td>'+
-                        '<td> <input type="text" class="form-control form-control-sm" name="roll[]" value="'+v.roll+'"></td>'+
-                        '</td>';
-                    });
-                    html= $('#roll-generate-tr').html(html);
+                    var source = $("#document-template").html();
+                    var template = Handlebars.compile(source);
+                    var html = template(data);
+                    $('#DocumentResults').html(html);
+                    $('[data-toggle="tooltip"]').tooltip();
                 }
             });
-        });
-    </script>
-
-    <script>
-        $(function () {
-        $('#myForm').validate({
-            rules: {
-            "roll[]": {
-                required: true,
-            },
-            },
-            messages: {
-            },
-            errorElement: 'span',
-            errorPlacement: function (error, element) {
-            error.addClass('invalid-feedback');
-            element.closest('.form-group').append(error);
-            },
-            highlight: function (element, errorClass, validClass) {
-            $(element).addClass('is-invalid');
-            },
-            unhighlight: function (element, errorClass, validClass) {
-            $(element).removeClass('is-invalid');
-            }
-        });
         });
     </script>
 @endsection

@@ -182,6 +182,7 @@
                     <i class="fas fa-angle-left right"></i>
                   </p>
                 </a>
+
                 <ul class="nav nav-treeview">
                   <li class="nav-item">
                     <a href="{{route('students.registration.view')}}" class="nav-link {{$route=='students.registration.view'?'active':''}}">
@@ -190,6 +191,7 @@
                     </a>
                   </li>
                 </ul>
+
                 <ul class="nav nav-treeview">
                   <li class="nav-item">
                     <a href="{{route('students.roll.view')}}" class="nav-link {{$route=='students.roll.view'?'active':''}}">
@@ -198,6 +200,15 @@
                     </a>
                   </li>
                 </ul>
+
+                <ul class="nav nav-treeview">
+                    <li class="nav-item">
+                      <a href="{{route('students.reg.fee.view')}}" class="nav-link {{$route=='students.reg.fee.view'?'active':''}}">
+                        <i class="far fa-circle nav-icon"></i>
+                        <p>Registration Fee</p>
+                      </a>
+                    </li>
+                  </ul>
             </li>
         </ul>
     </nav>

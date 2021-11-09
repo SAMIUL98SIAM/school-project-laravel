@@ -4,7 +4,6 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>AdminLTE 3 | Dashboard</title>
-
   <!-- Google Font: Source Sans Pro -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
   <!-- Font Awesome -->
@@ -31,6 +30,9 @@
   <link rel="stylesheet" href="{{asset('/admin/plugins/datatables-buttons/css/buttons.bootstrap4.min.css')}}">
   <!-- jQuery -->
   <script src="{{asset('/admin/plugins/jquery/jquery.min.js')}}"></script>
+  <!-- Handlebars -->
+  <script src="{{asset('/admin/js/handlebars/handlebars.min.js')}}"></script>
+
   <style type="text/css">
       .notifyjs-corner{
           z-index: 10000 !important;
@@ -43,38 +45,38 @@
 <body class="hold-transition sidebar-mini layout-fixed">
 <div class="wrapper">
 
-   <!-- Preloader--->
-   <div class="preloader flex-column justify-content-center align-items-center">
-      <img class="animation__shake" src="{{asset('/admin/dist/img/AdminLTELogo.png')}}" alt="AdminLTELogo" height="60" width="60">
-   </div>
-   <!-- Preloader/-->
+    <!-- Preloader--->
+    <div class="preloader flex-column justify-content-center align-items-center">
+        <img class="animation__shake" src="{{asset('/admin/dist/img/AdminLTELogo.png')}}" alt="AdminLTELogo" height="60" width="60">
+    </div>
+    <!-- Preloader/-->
 
-   <!---Navbar---->
-   @include('admin.layouts.navbar')
-   <!---Navbar/--->
-
-
-   <!---Sidebar---->
-   @include('admin.layouts.sidebar')
-   <!---Sidebar/--->
+    <!---Navbar---->
+    @include('admin.layouts.navbar')
+    <!---Navbar/--->
 
 
-   <!----Main Content----->
-   @yield('content')
-   @if(session()->has('success'))
+    <!---Sidebar---->
+    @include('admin.layouts.sidebar')
+    <!---Sidebar/--->
+
+
+    <!----Main Content----->
+    @yield('content')
+    @if(session()->has('success'))
         <script type="text/javascript">
             $(function(){
                 $.notify("{{session()->get('success')}}",{globalPosition:'top right',className:'success'});
             });
         </script>
-   @endif
-   @if(session()->has('error'))
-   <script type="text/javascript">
+    @endif
+    @if(session()->has('error'))
+    <script type="text/javascript">
        $(function(){
            $.notify("{{session()->get('error')}}",{globalPosition:'top right',className:'error'});
        });
-   </script>
-@endif
+    </script>
+    @endif
    <!----Main Content/---->
 
    <!----Footer----->
@@ -136,9 +138,9 @@
 <script src="{{asset('/admin/plugins/datatables-buttons/js/buttons.html5.min.js')}}"></script>
 <script src="{{asset('/admin/plugins/datatables-buttons/js/buttons.print.min.js')}}"></script>
 <script src="{{asset('/admin/plugins/datatables-buttons/js/buttons.colVis.min.js')}}"></script>
+
 <!-- jquery-validation -->
 <script src="{{asset('/admin/plugins/jquery-validation/jquery.validate.min.js')}}"></script>
-<script src="{{asset('/admin/plugins/jquery-validation/additional-methods.min.js')}}"></script>
 <!-- Page specific script -->
 <script>
     $(function () {

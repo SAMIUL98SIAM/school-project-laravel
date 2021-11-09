@@ -196,6 +196,14 @@ class EmployeeRegController extends Controller
         }
     }
 
+    public function details($id)
+    {
+        $data['details'] = User::find($id);
+        $pdf = PDF::loadView('admin.employee.employee_reg.employee_details_pdf', $data);
+        $pdf->SetProtection(['copy','print'],'','pass');
+        return $pdf->stream('document.pdf');
+    }
+
 
 
 }

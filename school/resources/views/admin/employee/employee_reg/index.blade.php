@@ -49,7 +49,7 @@
                                 @if(Auth::user()->role=="Admin")
                                     <th>Code</th>
                                 @endif
-                                <th>Action</th>
+                                <th width="12%">Action</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -66,8 +66,10 @@
                                 @if(Auth::user()->role=="Admin")
                                     <td>{{$employee->code}}</td>
                                 @endif
-                                <td>
+                                <td width="12%">
                                     <a title="Edit" class="btn btn-sm btn-primary" href="{{route('employees.registration.edit',$employee->id)}}"><i class="fa fa-edit"></i></a>
+
+                                    <a target="_blank" type="button" href="{{route('employees.registration.details',$employee->id)}}" class="btn btn-info btn-sm"><i class="fa fa-check"></i> </a>
                                 </td>
                             </tr>
                             @endforeach

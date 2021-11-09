@@ -183,8 +183,9 @@ Route::group(['middleware'=>'auth'],function () {
         Route::get('/reg/view',[\App\Http\Controllers\Admin\Employee\EmployeeRegController::class,'index'])->name('employees.registration.view');
         Route::get('/reg/create',[\App\Http\Controllers\Admin\Employee\EmployeeRegController::class,'create'])->name('employees.registration.create');
         Route::post('/reg/create',[\App\Http\Controllers\Admin\Employee\EmployeeRegController::class,'store'])->name('employees.registration.store');
-        Route::get('/reg/edit/{employee_id}',[\App\Http\Controllers\Admin\Employee\EmployeeRegController::class,'edit'])->name('employees.registration.edit');
-        Route::post('/reg/update/{employee_id}',[\App\Http\Controllers\Admin\Employee\EmployeeRegController::class,'update'])->name('employees.registration.update');
+        Route::get('/reg/edit/{id}',[\App\Http\Controllers\Admin\Employee\EmployeeRegController::class,'edit'])->name('employees.registration.edit');
+        Route::post('/reg/update/{id}',[\App\Http\Controllers\Admin\Employee\EmployeeRegController::class,'update'])->name('employees.registration.update');
+        Route::get('/reg/details/{id}',[\App\Http\Controllers\Admin\Employee\EmployeeRegController::class,'details'])->name('employees.registration.details');
         /*Student Registration*/
     });
 

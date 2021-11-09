@@ -7,12 +7,12 @@
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1 class="m-0">Manage Monthly Fee</h1>
+                    <h1 class="m-0">Manage Exam Fee</h1>
                 </div><!-- /.col -->
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
                     <li class="breadcrumb-item"><a href="{{route('home')}}">Home</a></li>
-                    <li class="breadcrumb-item active">Monthly Fee</li>
+                    <li class="breadcrumb-item active">Exam Fee</li>
                     </ol>
                 </div><!-- /.col -->
             </div><!-- /.row -->
@@ -53,21 +53,12 @@
                                     </select>
                                 </div>
                                 <div class="form-group col-3">
-                                    <label class="month">Class <font style="color: red">*</font></label>
-                                    <select name="month" id="month" class="form-control form-control-sm">
-                                        <option value="">Select Month</option>
-                                        <option value="January">January</option>
-                                        <option value="February">February</option>
-                                        <option value="March">March</option>
-                                        <option value="April">April</option>
-                                        <option value="May">May</option>
-                                        <option value="June">June</option>
-                                        <option value="July">July</option>
-                                        <option value="August">August</option>
-                                        <option value="September">September</option>
-                                        <option value="October">October</option>
-                                        <option value="November">November</option>
-                                        <option value="December">December</option>
+                                    <label class="exam_type_id">Class <font style="color: red">*</font></label>
+                                    <select name="exam_type_id" id="exam_type_id" class="form-control form-control-sm">
+                                        <option value="">Select Exam Type</option>
+                                        @foreach($exam_types as $exam)
+                                            <option value="{{$exam->id}}">{{$exam->name}}</option>
+                                        @endforeach
                                     </select>
                                 </div>
                                 <div class="form-group col-3" style="padding-top: 30px;">
@@ -112,7 +103,7 @@
         $(document).on('click','#search',function () {
             var year_id = $('#year_id').val();
             var class_id = $('#class_id').val();
-            var month = $('#month').val();
+            var exam_type_id = $('#exam_type_id').val();
             $('.notifyjs-corner').html('');
             if(year_id == '')
             {
@@ -124,15 +115,15 @@
                 $.notify("Class required",{globalPosition:'top right',className:'error'});
                 return false;
             }
-            if(month== '')
+            if(exam_type_id== '')
             {
-                $.notify("Month required",{globalPosition:'top right',className:'error'});
+                $.notify("Exam required",{globalPosition:'top right',className:'error'});
                 return false;
             }
             $.ajax({
-                url: "{{route('students.monthly.fee.get')}}",
+                url: "{{route('students.exam.fee.get')}}",
                 type: "get",
-                data: {'year_id':year_id,'class_id':class_id,' month': month},
+                data: {'year_id':year_id,'class_id':class_id,' exam_type_id': exam_type_id},
                 beforeSend: function(){
                 },
                 success: function(data){

@@ -69,7 +69,7 @@ class MonthlyFeeController extends Controller
 
                 $html[$key]['tdsource'] .='<td>'.$finalfee.'TK'.'</td>' ;
                 $html[$key]['tdsource'] .='<td>' ;
-                $html[$key]['tdsource'] .='<a class="btn btn-sm btn-'.$color.'" title="Payslip" target="_blank" href="'.route("students.monthly.fee.payslip").'?class_id='.$v->class_id.'&student_id='.$v->student_id.'&month='.$request->month.'">Fee Slip</a>' ;
+                $html[$key]['tdsource'] .='<a class="btn btn-sm btn-'.$color.'" title="Payslip" target="_blank" href="'.route("students.monthly.fee.payslip").'?class_id='.$v->class_id.'&student_id='.$v->student_id.'&month='.$request-> month.'">Fee Slip</a>' ;
                 $html[$key]['tdsource'] .='</td>' ;
         }
         return response()->json(@$html);

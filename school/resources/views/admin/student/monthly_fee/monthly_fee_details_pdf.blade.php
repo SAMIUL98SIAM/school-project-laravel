@@ -171,7 +171,7 @@
             <div class="col-md-12">
                 @php
                     $registrationfee =
-                    App\Models\FeeCategoryAmount::where('fee_category_id','1')->where('class_id',$details->class_id)->first();
+                    App\Models\FeeCategoryAmount::where('fee_category_id','2')->where('class_id',$details->class_id)->first();
                     $originalfee = $registrationfee->amount;
                     $discount = $details['discount']['discount'];
                     $discountablefee = $discount/100*$originalfee;

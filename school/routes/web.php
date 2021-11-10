@@ -193,9 +193,17 @@ Route::group(['middleware'=>'auth'],function () {
         Route::get('/salary/view',[\App\Http\Controllers\Admin\Employee\EmployeeSalaryController::class,'index'])->name('employees.salary.view');
         Route::get('/salary/increment/{id}',[\App\Http\Controllers\Admin\Employee\EmployeeSalaryController::class,'increment'])->name('employees.salary.increment');
         Route::post('/salary/increment/{id}',[\App\Http\Controllers\Admin\Employee\EmployeeSalaryController::class,'increment_store'])->name('employees.salary.increment.store');
-
         Route::get('/salary/details/{id}',[\App\Http\Controllers\Admin\Employee\EmployeeSalaryController::class,'details'])->name('employees.salary.details');
         /*Empployee Salary*/
+
+         /*Empployee Leave*/
+         Route::get('/leave/view',[\App\Http\Controllers\Admin\Employee\EmployeeLeaveController::class,'index'])->name('employees.leave.view');
+         Route::get('/leave/create',[\App\Http\Controllers\Admin\Employee\EmployeeLeaveController::class,'create'])->name('employees.leave.create');
+         Route::post('/leave/create',[\App\Http\Controllers\Admin\Employee\EmployeeLeaveController::class,'store'])->name('employees.leave.store');
+         Route::get('/leave/edit/{id}',[\App\Http\Controllers\Admin\Employee\EmployeeLeaveController::class,'edit'])->name('employees.leave.edit');
+         Route::post('/leave/update/{id}',[\App\Http\Controllers\Admin\Employee\EmployeeLeaveController::class,'update'])->name('employees.leave.update');
+         Route::get('/leave/details/{id}',[\App\Http\Controllers\Admin\Employee\EmployeeLeaveController::class,'details'])->name('employees.leave.details');
+         /*Empployee Leave*/
     });
 
 });

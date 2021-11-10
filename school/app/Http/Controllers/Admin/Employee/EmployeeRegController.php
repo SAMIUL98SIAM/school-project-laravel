@@ -116,8 +116,8 @@ class EmployeeRegController extends Controller
             $employee_salary = new EmployeeSalaryLog();
             $employee_salary->employee_id = $user->id ;
             $employee_salary->effected_date = date('Y-m-d',strtotime($request->join_date));
-            $employee_salary->previous_salary = $request->previous_salary;
-            $employee_salary->present_salary = $request->present_salary;
+            $employee_salary->previous_salary = $request->salary;
+            $employee_salary->present_salary = $request->salary;
             $employee_salary->increment_salary = '0';
             $employee_salary->save();
 
@@ -203,7 +203,4 @@ class EmployeeRegController extends Controller
         $pdf->SetProtection(['copy','print'],'','pass');
         return $pdf->stream('document.pdf');
     }
-
-
-
 }

@@ -35,6 +35,7 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 
 Route::group(['middleware'=>'auth'],function () {
 
+
     Route::prefix('users')->group(function(){
         Route::get('/view',[\App\Http\Controllers\Admin\UserController::class,'index'])->name('users.view');
         Route::get('/create',[\App\Http\Controllers\Admin\UserController::class,'create'])->name('users.create');
@@ -129,7 +130,7 @@ Route::group(['middleware'=>'auth'],function () {
         /*Assign Subject*/
 
 
-         /*Subject*/
+        /*Subject*/
          Route::get('/designation/view',[\App\Http\Controllers\Admin\Setup\DesignationController::class,'index'])->name('setups.designation.view');
          Route::post('/designation/create',[\App\Http\Controllers\Admin\Setup\DesignationController::class,'store'])->name('setups.designation.store');
          Route::put('/designation/update/{id}',[\App\Http\Controllers\Admin\Setup\DesignationController::class,'update'])->name('setups.designation.update');
@@ -179,14 +180,22 @@ Route::group(['middleware'=>'auth'],function () {
     });
     Route::prefix('employees')->group(function(){
 
-        /*Student Registration*/
+        /*Empployee Registration*/
         Route::get('/reg/view',[\App\Http\Controllers\Admin\Employee\EmployeeRegController::class,'index'])->name('employees.registration.view');
         Route::get('/reg/create',[\App\Http\Controllers\Admin\Employee\EmployeeRegController::class,'create'])->name('employees.registration.create');
         Route::post('/reg/create',[\App\Http\Controllers\Admin\Employee\EmployeeRegController::class,'store'])->name('employees.registration.store');
         Route::get('/reg/edit/{id}',[\App\Http\Controllers\Admin\Employee\EmployeeRegController::class,'edit'])->name('employees.registration.edit');
         Route::post('/reg/update/{id}',[\App\Http\Controllers\Admin\Employee\EmployeeRegController::class,'update'])->name('employees.registration.update');
         Route::get('/reg/details/{id}',[\App\Http\Controllers\Admin\Employee\EmployeeRegController::class,'details'])->name('employees.registration.details');
-        /*Student Registration*/
+        /*Empployee Registration*/
+
+        /*Empployee Salary*/
+        Route::get('/salary/view',[\App\Http\Controllers\Admin\Employee\EmployeeSalaryController::class,'index'])->name('employees.salary.view');
+        Route::get('/salary/increment/{id}',[\App\Http\Controllers\Admin\Employee\EmployeeSalaryController::class,'increment'])->name('employees.salary.increment');
+        Route::post('/salary/increment/{id}',[\App\Http\Controllers\Admin\Employee\EmployeeSalaryController::class,'increment_store'])->name('employees.salary.increment.store');
+
+        Route::get('/salary/details/{id}',[\App\Http\Controllers\Admin\Employee\EmployeeSalaryController::class,'details'])->name('employees.salary.details');
+        /*Empployee Salary*/
     });
 
 });

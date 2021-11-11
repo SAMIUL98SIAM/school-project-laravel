@@ -204,6 +204,18 @@ Route::group(['middleware'=>'auth'],function () {
          Route::post('/leave/update/{id}',[\App\Http\Controllers\Admin\Employee\EmployeeLeaveController::class,'update'])->name('employees.leave.update');
          Route::get('/leave/details/{id}',[\App\Http\Controllers\Admin\Employee\EmployeeLeaveController::class,'details'])->name('employees.leave.details');
          /*Empployee Leave*/
+
+          /*Empployee Attendence*/
+          Route::get('/attendence/view',[\App\Http\Controllers\Admin\Employee\EmployeeAttendenceController::class,'index'])->name('employees.attendence.view');
+          Route::get('/attendence/create',[\App\Http\Controllers\Admin\Employee\EmployeeAttendenceController::class,'create'])->name('employees.attendence.create');
+          Route::post('/attendence/create',[\App\Http\Controllers\Admin\Employee\EmployeeAttendenceController::class,'store'])->name('employees.attendence.store');
+          Route::get('/attendence/edit/{date}',[\App\Http\Controllers\Admin\Employee\EmployeeAttendenceController::class,'edit'])->name('employees.attendence.edit');
+          Route::get('/attendence/details/{date}',[\App\Http\Controllers\Admin\Employee\EmployeeAttendenceController::class,'details'])->name('employees.attendence.details');
+          /*Empployee Attendence*/
+
+
+
+
     });
 
 });

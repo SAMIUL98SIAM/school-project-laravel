@@ -7,12 +7,12 @@
             <div class="container-fluid">
                 <div class="row mb-2">
                     <div class="col-sm-6">
-                        <h1 class="m-0">Manage Employee Leave</h1>
+                        <h1 class="m-0">Manage Employee Attendence</h1>
                     </div><!-- /.col -->
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">
                         <li class="breadcrumb-item"><a href="{{route('home')}}">Home</a></li>
-                        <li class="breadcrumb-item active">Employee Leave</li>
+                        <li class="breadcrumb-item active">Employee Attendence</li>
                         </ol>
                     </div><!-- /.col -->
                 </div><!-- /.row -->
@@ -30,9 +30,8 @@
             <!-- Custom tabs (Charts with tabs)-->
             <div class="card">
                 <div class="card-header">
-                    <h3>Employee Leave List</h3>
-                    <a class="btn btn-success float-right btn-sm" href="{{route('employees.leave.create')}}"><i class="fa fa-plus-circle"> Create Employee Leave</i></a>
-
+                    <h3 class="card-title">Employee Attendence List Details</h3>
+                    <a class="btn btn-success float-right btn-sm" href="{{route('employees.attendence.view')}}"><i class="fa fa-list"> Employee Attendence Details</i></a>
                 </div><!-- /.card-header -->
                 <div class="card-body">
                     <table id="example1" class="table table-bordered table-hover">
@@ -41,22 +40,20 @@
                                 <th>Serial</th>
                                 <th>Employee Name</th>
                                 <th>ID No</th>
-                                <th>Purpose</th>
                                 <th>Date</th>
-                                <th width="12%">Action</th>
+                                <th>Attende Status</th>
+
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach ($allData as $key=>$employee)
+                            @foreach ($details as $key=>$employee)
                             <tr>
                                 <td>{{$key+1}}</td>
-                                <td>{{$employee->user->name}}</td>
-                                <td>{{$employee->user->id_no}}</td>
-                                <td>{{$employee->purpose->name}}</td>
-                                <td>{{date('d-m-Y',strtotime($employee->start_date))}} to {{date('d-m-Y',strtotime($employee->end_date))}}</td>
-                                <td width="12%">
-                                    <a title="Edit" class="btn btn-sm btn-primary" href="{{route('employees.leave.edit',$employee->id)}}"><i class="fa fa-edit"></i></a>
-                                </td>
+                                <td>{{$employee->user['id_no']}}</td>
+                                <td>{{$employee->user['name']}}</td>
+                                <td>{{date('d-m-Y',strtotime($employee->date))}}</td>
+                                <td>{{$employee->attend_status}}</td>
+
                             </tr>
                             @endforeach
                         </tbody>

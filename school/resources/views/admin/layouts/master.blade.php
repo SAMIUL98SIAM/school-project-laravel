@@ -28,10 +28,18 @@
   <link rel="stylesheet" href="{{asset('/admin/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css')}}">
   <link rel="stylesheet" href="{{asset('/admin/plugins/datatables-responsive/css/responsive.bootstrap4.min.css')}}">
   <link rel="stylesheet" href="{{asset('/admin/plugins/datatables-buttons/css/buttons.bootstrap4.min.css')}}">
+  <!--- Datepicker CSS --->
+  <link rel="stylesheet" href="{{asset('/admin/datepicker/daterangepicker.css')}}">
+  @yield('styles')
+
+  <!--- Datepicker JS --->
+  <link rel="stylesheet" href="{{asset('/admin/datepicker/daterangepicker.js')}}">
+  <link rel="stylesheet" href="{{asset('/admin/datepicker/locales.min.js')}}">
   <!-- jQuery -->
   <script src="{{asset('/admin/plugins/jquery/jquery.min.js')}}"></script>
   <!-- Handlebars -->
   <script src="{{asset('/admin/js/handlebars/handlebars.min.js')}}"></script>
+
 
   <style type="text/css">
       .notifyjs-corner{

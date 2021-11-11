@@ -96,7 +96,6 @@
 
                                         <a type="button" href="{{route('students.registration.getPromotion',$data->student_id)}}" class="btn btn-primary btn-sm"><i class="fa fa-eye"></i> </a>
 
-
                                         <a target="_blank" type="button" href="{{route('students.registration.details',$data->student_id)}}" class="btn btn-info btn-sm"><i class="fa fa-check"></i> </a>
                                     </td>
                                 </tr>

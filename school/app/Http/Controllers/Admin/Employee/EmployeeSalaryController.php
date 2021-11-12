@@ -3,18 +3,9 @@
 namespace App\Http\Controllers\Admin\Employee;
 
 use App\Http\Controllers\Controller;
-use App\Models\AssignStudent;
-use App\Models\DiscountStudent;
-use App\Models\StudentClass;
-use App\Models\Group;
-use App\Models\StudentShift;
 use App\Models\User;
-use App\Models\Year;
 use App\Models\EmployeeSalaryLog;
 use App\Models\Designation;
-use Illuminate\Support\Facades\Hash;
-use Illuminate\Support\Facades\DB;
-use niklasravnsborg\LaravelPdf\Facades\Pdf;
 use Illuminate\Http\Request;
 
 class EmployeeSalaryController extends Controller

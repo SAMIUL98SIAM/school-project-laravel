@@ -31,7 +31,7 @@
             <div class="card">
                 <div class="card-header">
                     <h3 class="card-title">Employee Attendence List Details</h3>
-                    <a class="btn btn-success float-right btn-sm" href="{{route('employees.attendence.view')}}"><i class="fa fa-list"> Employee Attendence Details</i></a>
+                    <a class="btn btn-success float-right btn-sm" href="{{route('employees.attendence.view')}}"><i class="fa fa-list"> Employee Attendence List</i></a>
                 </div><!-- /.card-header -->
                 <div class="card-body">
                     <table id="example1" class="table table-bordered table-hover">

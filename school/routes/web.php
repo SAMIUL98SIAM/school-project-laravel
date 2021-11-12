@@ -214,6 +214,11 @@ Route::group(['middleware'=>'auth'],function () {
           /*Empployee Attendence*/
 
 
+         /*Empployee Monthly Salary*/
+         Route::get('/monthly/salary/view',[\App\Http\Controllers\Admin\Employee\MonthlySalaryController::class,'index'])->name('employees.monthly.salary.view');
+         Route::get('/monthly/salary/get',[\App\Http\Controllers\Admin\Employee\MonthlySalaryController::class,'getSalary'])->name('employees.monthly.salary.get');
+         Route::get('/monthly/salary/payslip/{employee_id}',[\App\Http\Controllers\Admin\Employee\MonthlySalaryController::class,'payslip'])->name('employees.monthly.salary.payslip');
+         /*Empployee Monthly Salary*/
 
 
     });

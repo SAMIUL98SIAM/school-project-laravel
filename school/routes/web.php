@@ -213,15 +213,20 @@ Route::group(['middleware'=>'auth'],function () {
           Route::get('/attendence/details/{date}',[\App\Http\Controllers\Admin\Employee\EmployeeAttendenceController::class,'details'])->name('employees.attendence.details');
           /*Empployee Attendence*/
 
-
          /*Empployee Monthly Salary*/
          Route::get('/monthly/salary/view',[\App\Http\Controllers\Admin\Employee\MonthlySalaryController::class,'index'])->name('employees.monthly.salary.view');
          Route::get('/monthly/salary/get',[\App\Http\Controllers\Admin\Employee\MonthlySalaryController::class,'getSalary'])->name('employees.monthly.salary.get');
          Route::get('/monthly/salary/payslip/{employee_id}',[\App\Http\Controllers\Admin\Employee\MonthlySalaryController::class,'payslip'])->name('employees.monthly.salary.payslip');
          /*Empployee Monthly Salary*/
 
-
     });
+    Route::prefix('marks')->group(function(){
+        Route::get('/create',[\App\Http\Controllers\Admin\Mark\MarksController::class,'create'])->name('marks.create');
+        Route::post('/create',[\App\Http\Controllers\Admin\Mark\MarksController::class,'store'])->name('marks.store');
+    });
+
+    Route::get('/get-student',[\App\Http\Controllers\Admin\DefaultController::class,'getStudent'])->name('get-student');
+    Route::get('/get-subject',[\App\Http\Controllers\Admin\DefaultController::class,'getSubject'])->name('get-subject');
 
 });
 

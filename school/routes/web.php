@@ -223,10 +223,13 @@ Route::group(['middleware'=>'auth'],function () {
     Route::prefix('marks')->group(function(){
         Route::get('/create',[\App\Http\Controllers\Admin\Mark\MarksController::class,'create'])->name('marks.create');
         Route::post('/create',[\App\Http\Controllers\Admin\Mark\MarksController::class,'store'])->name('marks.store');
+        Route::get('/edit',[\App\Http\Controllers\Admin\Mark\MarksController::class,'edit'])->name('marks.edit');
+        Route::post('/update',[\App\Http\Controllers\Admin\Mark\MarksController::class,'update'])->name('marks.update');
     });
 
     Route::get('/get-student',[\App\Http\Controllers\Admin\DefaultController::class,'getStudent'])->name('get-student');
     Route::get('/get-subject',[\App\Http\Controllers\Admin\DefaultController::class,'getSubject'])->name('get-subject');
+    Route::get('/get-student-mark',[\App\Http\Controllers\Admin\DefaultController::class,'getMark'])->name('get-student-mark');
 
 });
 

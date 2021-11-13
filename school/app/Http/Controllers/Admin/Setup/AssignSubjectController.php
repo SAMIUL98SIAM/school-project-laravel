@@ -99,18 +99,39 @@ class AssignSubjectController extends Controller
         }
         else
         {
-            AssignSubject::where('class_id',$class_id)->delete();
-            $countSubject = count($request->subject_id);
-            for($i=0;$i<$countSubject;$i++)
+
+            AssignSubject::whereNotIn('subject_id',$request->subject_id)->where('class_id',$request->class_id)->delete();
+            foreach($request->subject_id as $key=>$value)
             {
-                $data = new AssignSubject();
-                $data->class_id = $request->class_id ;
-                $data->subject_id = $request->subject_id[$i] ;
-                $data->full_mark = $request->full_mark[$i] ;
-                $data->pass_mark = $request->pass_mark[$i] ;
-                $data->get_mark = $request->get_mark[$i] ;
-                $data->save();
+                $assign_subject_exist = AssignSubject::where('subject_id',$request->subject_id[$key])->where('class_id',$request->class_id)->first();
+                if($assign_subject_exist)
+                {
+                    $assignSubjects = $assign_subject_exist;
+                }
+                else
+                {
+                    $assignSubjects = new AssignSubject();
+                }
+                $assignSubjects->class_id = $request->class_id ;
+                $assignSubjects->subject_id = $request->subject_id[$key] ;
+                $assignSubjects->full_mark = $request->full_mark[$key] ;
+                $assignSubjects->pass_mark = $request->pass_mark[$key] ;
+                $assignSubjects->get_mark = $request->get_mark[$key] ;
+                $assignSubjects->save();
             }
+
+            // AssignSubject::where('class_id',$class_id)->delete();
+            // $countSubject = count($request->subject_id);
+            // for($i=0;$i<$countSubject;$i++)
+            // {
+            //     $data = new AssignSubject();
+            //     $data->class_id = $request->class_id ;
+            //     $data->subject_id = $request->subject_id[$i] ;
+            //     $data->full_mark = $request->full_mark[$i] ;
+            //     $data->pass_mark = $request->pass_mark[$i] ;
+            //     $data->get_mark = $request->get_mark[$i] ;
+            //     $data->save();
+            // }
 
         }
         return redirect()->route('setups.assign.subject.view')->with('success','Assign Subject Updated Successfully');

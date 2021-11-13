@@ -33,4 +33,13 @@ class DefaultController extends Controller
         $allData = AssignSubject::with(['subject'])->where('class_id',$class_id)->get();
         return response()->json($allData);
     }
+    public function getMark(Request $request)
+    {
+        $year_id = $request->year_id ;
+        $class_id = $request->class_id ;
+        $assign_subject_id = $request->assign_subject_id ;
+        $exam_type_id = $request->exam_type_id ;
+        $allData = StudentMarks::with(['student'])->where('year_id',$year_id)->where('class_id',$class_id)->where('assign_subject_id',$assign_subject_id)->where('exam_type_id',$exam_type_id)->get();
+        return response()->json($allData);
+    }
 }

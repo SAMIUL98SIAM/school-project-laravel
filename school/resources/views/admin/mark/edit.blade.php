@@ -7,12 +7,12 @@
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1 class="m-0">Manage Roll Generate</h1>
+                    <h1 class="m-0">Manage Marks Edit</h1>
                 </div><!-- /.col -->
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
                     <li class="breadcrumb-item"><a href="{{route('home')}}">Home</a></li>
-                    <li class="breadcrumb-item active">Roll Generate</li>
+                    <li class="breadcrumb-item active">Marks Edit</li>
                     </ol>
                 </div><!-- /.col -->
             </div><!-- /.row -->
@@ -33,7 +33,7 @@
                         <h3>Search Criteria</h3>
                     </div><!-- /.card-header -->
                     <div class="card-body">
-                        <form method="POST" action="{{route('marks.store')}}" id="myForm">
+                        <form method="POST" action="{{route('marks.update')}}" id="myForm">
                             @csrf
                             <div class="form-row">
                                 <div class="col-3">
@@ -90,7 +90,7 @@
                                         </tbody>
                                     </table>
                                 </div>
-                                <button type="submit" class="btn btn-success btn-sm">Submit</button>
+                                <button type="submit" class="btn btn-success btn-sm">Update</button>
                             </div>
 
                         </form>
@@ -138,9 +138,9 @@
                 return false;
             }
             $.ajax({
-                url: "{{route('get-student')}}",
+                url: "{{route('get-student-mark')}}",
                 type: "GET",
-                data: {'year_id':year_id,'class_id':class_id},
+                data: {'year_id':year_id,'class_id':class_id,'assign_subject_id':assign_subject_id,'exam_type_id':exam_type_id},
                 success: function(data){
                     $('#marks-entry').removeClass('d-none');
                     var html = '';
@@ -151,7 +151,7 @@
                         '<td>'+v.student.name+'</td>'+
                         '<td>'+v.student.fname+'</td>'+
                         '<td>'+v.student.gender+'</td>'+
-                        '<td> <input type="text" class="form-control form-control-sm" name="marks[]""></td>'+
+                        '<td> <input type="text" class="form-control form-control-sm" name="marks[]" value="'+v.marks+'"></td>'+
                         '</td>';
                     });
                     html= $('#marks-entry-tr').html(html);

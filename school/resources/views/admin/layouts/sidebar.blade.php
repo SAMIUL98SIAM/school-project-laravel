@@ -190,36 +190,36 @@
                       <p>Student Registration</p>
                     </a>
                   </li>
-                </ul>
 
-                <ul class="nav nav-treeview">
+
+
                   <li class="nav-item">
                     <a href="{{route('students.roll.view')}}" class="nav-link {{$route=='students.roll.view'?'active':''}}">
                       <i class="far fa-circle nav-icon"></i>
                       <p>Roll Generate</p>
                     </a>
                   </li>
-                </ul>
 
-                <ul class="nav nav-treeview">
+
+
                     <li class="nav-item">
                       <a href="{{route('students.reg.fee.view')}}" class="nav-link {{$route=='students.reg.fee.view'?'active':''}}">
                         <i class="far fa-circle nav-icon"></i>
                         <p>Registration Fee</p>
                       </a>
                     </li>
-                </ul>
 
-                <ul class="nav nav-treeview">
+
+
                     <li class="nav-item">
                       <a href="{{route('students.monthly.fee.view')}}" class="nav-link {{$route=='students.monthly.fee.view'?'active':''}}">
                         <i class="far fa-circle nav-icon"></i>
                         <p>Monthly Fee</p>
                       </a>
                     </li>
-                </ul>
 
-                <ul class="nav nav-treeview">
+
+
                     <li class="nav-item">
                       <a href="{{route('students.exam.fee.view')}}" class="nav-link {{$route=='students.exam.fee.view'?'active':''}}">
                         <i class="far fa-circle nav-icon"></i>
@@ -245,36 +245,36 @@
                       <p>Employee Registration</p>
                     </a>
                   </li>
-                </ul>
 
-                <ul class="nav nav-treeview">
+
+
                     <li class="nav-item">
                       <a href="{{route('employees.salary.view')}}" class="nav-link {{$route=='employees.salary.view'?'active':''}}">
                         <i class="far fa-circle nav-icon"></i>
                         <p>Employee Salary</p>
                       </a>
                     </li>
-                  </ul>
 
-                  <ul class="nav nav-treeview">
+
+
                     <li class="nav-item">
                       <a href="{{route('employees.leave.view')}}" class="nav-link {{$route=='employees.leave.view'?'active':''}}">
                         <i class="far fa-circle nav-icon"></i>
                         <p>Employee Leave</p>
                       </a>
                     </li>
-                  </ul>
 
-                  <ul class="nav nav-treeview">
+
+
                     <li class="nav-item">
                       <a href="{{route('employees.attendence.view')}}" class="nav-link {{$route=='employees.attendence.view'?'active':''}}">
                         <i class="far fa-circle nav-icon"></i>
                         <p>Employee Attendence</p>
                       </a>
                     </li>
-                  </ul>
 
-                  <ul class="nav nav-treeview">
+
+
                     <li class="nav-item">
                       <a href="{{route('employees.monthly.salary.view')}}" class="nav-link {{$route=='employees.monthly.salary.view'?'active':''}}">
                         <i class="far fa-circle nav-icon"></i>
@@ -300,8 +300,15 @@
                         <p>Marks Entry</p>
                       </a>
                     </li>
-                  </ul>
-            </li>
+
+                    <li class="nav-item">
+                        <a href="{{route('marks.edit')}}" class="nav-link {{$route=='marks.edit'?'active':''}}">
+                          <i class="far fa-circle nav-icon"></i>
+                          <p>Marks Edit</p>
+                        </a>
+                      </li>
+                    </ul>
+                </li>
         </ul>
     </nav>
 </aside>

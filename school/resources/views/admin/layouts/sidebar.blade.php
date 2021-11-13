@@ -306,8 +306,16 @@
                           <i class="far fa-circle nav-icon"></i>
                           <p>Marks Edit</p>
                         </a>
-                      </li>
-                    </ul>
+                    </li>
+
+                    <li class="nav-item">
+                        <a href="{{route('marks.grade.view')}}" class="nav-link {{$route=='marks.grade.view'?'active':''}}">
+                          <i class="far fa-circle nav-icon"></i>
+                          <p>Grade Point</p>
+                        </a>
+                    </li>
+
+                  </ul>
                 </li>
         </ul>
     </nav>

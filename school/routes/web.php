@@ -221,10 +221,26 @@ Route::group(['middleware'=>'auth'],function () {
 
     });
     Route::prefix('marks')->group(function(){
+
+        /*Marks Entry*/
         Route::get('/create',[\App\Http\Controllers\Admin\Mark\MarksController::class,'create'])->name('marks.create');
         Route::post('/create',[\App\Http\Controllers\Admin\Mark\MarksController::class,'store'])->name('marks.store');
+        /*Marks Entry*/
+
+        /*Marks Edit*/
         Route::get('/edit',[\App\Http\Controllers\Admin\Mark\MarksController::class,'edit'])->name('marks.edit');
         Route::post('/update',[\App\Http\Controllers\Admin\Mark\MarksController::class,'update'])->name('marks.update');
+        /*Marks Edit*/
+
+
+        /*Grade*/
+        Route::get('/grade/view',[\App\Http\Controllers\Admin\Mark\GradeController::class,'index'])->name('marks.grade.view');
+        Route::get('/grade/create',[\App\Http\Controllers\Admin\Mark\GradeController::class,'create'])->name('marks.grade.create');
+        Route::post('/grade/create',[\App\Http\Controllers\Admin\Mark\GradeController::class,'store'])->name('marks.grade.store');
+        Route::get('/grade/edit/{id}',[\App\Http\Controllers\Admin\Mark\GradeController::class,'edit'])->name('marks.grade.edit');
+        Route::post('/grade/update/{id}',[\App\Http\Controllers\Admin\Mark\GradeController::class,'update'])->name('marks.grade.update');
+        /*Grade*/
+
     });
 
     Route::get('/get-student',[\App\Http\Controllers\Admin\DefaultController::class,'getStudent'])->name('get-student');

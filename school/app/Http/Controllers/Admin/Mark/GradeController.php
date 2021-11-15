@@ -17,7 +17,7 @@ class GradeController extends Controller
     {
         $data['allData']= MarksGrade::all();
         // $data['allData']= User::all();
-        return view('admin.grade.index',$data);
+        return view('admin.mark.grade.index',$data);
     }
 
     /**
@@ -27,7 +27,7 @@ class GradeController extends Controller
      */
     public function create()
     {
-        return view('admin.grade.create');
+        return view('admin.mark.grade.create');
     }
 
     /**
@@ -70,7 +70,7 @@ class GradeController extends Controller
     public function edit($id)
     {
         $data['editData'] = MarksGrade::find($id);
-        return view('admin.grade.edit',$data);
+        return view('admin.mark.grade.edit',$data);
     }
 
     /**

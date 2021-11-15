@@ -178,6 +178,7 @@ Route::group(['middleware'=>'auth'],function () {
         Route::get('/exam/fee/playslip',[\App\Http\Controllers\Admin\Student\ExamFeeController::class,'playslip'])->name('students.exam.fee.payslip');
         /*Exam Fee*/
     });
+
     Route::prefix('employees')->group(function(){
 
         /*Empployee Registration*/
@@ -220,6 +221,7 @@ Route::group(['middleware'=>'auth'],function () {
          /*Empployee Monthly Salary*/
 
     });
+
     Route::prefix('marks')->group(function(){
 
         /*Marks Entry*/
@@ -243,10 +245,20 @@ Route::group(['middleware'=>'auth'],function () {
 
     });
 
+    Route::prefix('accounts')->group(function(){
+        /*Student Fee*/
+        Route::get('/student/fee/view',[\App\Http\Controllers\Admin\Account\StudentFeeController::class,'index'])->name('accounts.fee.view');
+        Route::get('/student/fee/create',[\App\Http\Controllers\Admin\Account\StudentFeeController::class,'create'])->name('accounts.fee.create');
+        Route::post('/student/fee/create',[\App\Http\Controllers\Admin\Account\StudentFeeController::class,'store'])->name('accounts.fee.store');
+        Route::get('/student/fee/edit/{id}',[\App\Http\Controllers\Admin\Account\StudentFeeController::class,'edit'])->name('accounts.fee.edit');
+        Route::post('/student/fee/update/{id}',[\App\Http\Controllers\Admin\Account\StudentFeeController::class,'update'])->name('accounts.fee.update');
+        /*Student Fee*/
+    });
+
     Route::get('/get-student',[\App\Http\Controllers\Admin\DefaultController::class,'getStudent'])->name('get-student');
     Route::get('/get-subject',[\App\Http\Controllers\Admin\DefaultController::class,'getSubject'])->name('get-subject');
     Route::get('/get-student-mark',[\App\Http\Controllers\Admin\DefaultController::class,'getMark'])->name('get-student-mark');
-
+    Route::get('/get-student-account-fee',[\App\Http\Controllers\Admin\DefaultController::class,'getAccountFee'])->name('get-student-account-fee');
 });
 
 

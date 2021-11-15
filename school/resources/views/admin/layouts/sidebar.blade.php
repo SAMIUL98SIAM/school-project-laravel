@@ -314,9 +314,29 @@
                           <p>Grade Point</p>
                         </a>
                     </li>
+                  </ul>
+            </li>
+
+            <li class="nav-item has-treeview {{$prefix=='/accounts'?'menu-open':''}}">
+                <a href="#" class="nav-link">
+                    <i class="nav-icon fas fa-copy"></i>
+                    <p>
+                      Manage Account
+                      <i class="fas fa-angle-left right"></i>
+                    </p>
+                  </a>
+
+                  <ul class="nav nav-treeview">
+                    <li class="nav-item">
+                      <a href="{{route('accounts.fee.view')}}" class="nav-link {{$route=='accounts.fee.view'?'active':''}}">
+                        <i class="far fa-circle nav-icon"></i>
+                        <p>Students Fee</p>
+                      </a>
+                    </li>
+
 
                   </ul>
-                </li>
+            </li>
         </ul>
     </nav>
 </aside>

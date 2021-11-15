@@ -206,6 +206,35 @@
         });
     });
 </script>
+
+<script type="text/javascript">
+    $(function(){
+        $('.singledatepicker').daterangepicker({
+            singleDatePicker:true,
+            showDropdowns:true,
+            autoUpdateInput:false,
+            autoApply:true,
+            locale:{
+                format: 'DD-MM-YYYY',
+                daysOfWeek: ['Su','Mo','Tu','We','Th','Fr','Sa'],
+                firstDay:0
+                },
+            minDate: '01/01/1930',
+          },
+          function(start){
+            this.element.val(start.format('DD-MM-YYYY'));
+            this.element.parent().parent().removeClass('has-error');
+          },
+          function(chosen_date){
+              this.element.val(chosen_date.format('DD-MM-YYYY'));
+        });
+        $('.singledatepicker').on('apply.datarangepicker',function(ev,picker){
+            $(this).val(picker.startDate.format('DD-MM-YYYY'));
+            $(this).trigger('change');
+        });
+    });
+</script>
+
 @yield('scripts')
 </body>
 </html>

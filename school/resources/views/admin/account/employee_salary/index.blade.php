@@ -7,12 +7,12 @@
             <div class="container-fluid">
                 <div class="row mb-2">
                     <div class="col-sm-6">
-                        <h1 class="m-0">Manage Student Fee's</h1>
+                        <h1 class="m-0">Manage Employee Salary</h1>
                     </div><!-- /.col -->
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">
                         <li class="breadcrumb-item"><a href="{{route('home')}}">Home</a></li>
-                        <li class="breadcrumb-item active">Student Fee's</li>
+                        <li class="breadcrumb-item active">Employee Salary</li>
                         </ol>
                     </div><!-- /.col -->
                 </div><!-- /.row -->
@@ -30,19 +30,16 @@
             <!-- Custom tabs (Charts with tabs)-->
             <div class="card">
                 <div class="card-header">
-                    <h3 class="card-title">Student Fee's List</h3>
-                    <a class="btn btn-success float-right btn-sm" href="{{route('accounts.fee.create')}}"><i class="fa fa-plus-circle"> Create/Edit Student Fee's</i></a>
+                    <h3 class="card-title">Employee Salary List</h3>
+                    <a class="btn btn-success float-right btn-sm" href="{{route('accounts.salary.create')}}"><i class="fa fa-plus-circle"> Create/Edit Employee Salary</i></a>
                 </div><!-- /.card-header -->
                 <div class="card-body">
                     <table id="example1" class="table table-bordered table-hover">
                         <thead>
                             <tr>
                                 <th>Serial</th>
-                                <th>Name</th>
                                 <th>ID No</th>
-                                <th>Year</th>
-                                <th>Class</th>
-                                <th>Fee Type</th>
+                                <th>Name</th>
                                 <th>Amount</th>
                                 <th>Date</th>
                             </tr>
@@ -51,11 +48,8 @@
                             @foreach ($allData as $key=>$data)
                             <tr>
                                 <td>{{$key+1}}</td>
-                                <td>{{$data['student']['id_no']}}</td>
-                                <td>{{$data['student']['name']}}</td>
-                                <td>{{$data['year']['name']}}</td>
-                                <td>{{$data['student_class']['name']}}</td>
-                                <td>{{$data['fee_category']['name']}}</td>
+                                <td>{{$data['user']['id_no']}}</td>
+                                <td>{{$data['user']['name']}}</td>
                                 <td>{{$data->amount}}</td>
                                 <td>{{date('M Y',strtotime($data->date))}}</td>
                             </tr>

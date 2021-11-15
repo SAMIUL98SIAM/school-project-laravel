@@ -3,23 +3,29 @@
 namespace App\Http\Controllers\Admin\Account;
 
 use App\Http\Controllers\Controller;
+use App\Models\AccountEmployeeSalary;
+use App\Models\AssignStudent;
+use App\Models\DiscountStudent;
 use App\Models\StudentClass;
 use App\Models\Year;
+use App\Models\Group;
+use App\Models\User;
 use App\Models\FeeCategory;
 use App\Models\AccountStudentFee;
+use App\Models\Logo;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
-
-class StudentFeeController extends Controller
+class EmployeeSalaryController extends Controller
 {
-    /**
+     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
     public function index()
     {
-        $data['allData'] = AccountStudentFee::all();
-        return view('admin.account.student_fee.index',$data);
+        $data['allData'] = AccountEmployeeSalary::all();
+        return view('admin.account.employee_salary.index',$data);
     }
 
     /**
@@ -29,10 +35,7 @@ class StudentFeeController extends Controller
      */
     public function create()
     {
-        $data['years'] = Year::orderBy('id','desc')->get();
-        $data['classes'] = StudentClass::all();
-        $data['fee_categories'] = FeeCategory::all();
-        return view('admin.account.student_fee.create',$data);
+        return view('admin.account.employee_salary.create');
     }
 
     /**
@@ -46,28 +49,25 @@ class StudentFeeController extends Controller
         $date = date('Y-m',strtotime($request->date));
         //$date = $request->date;
 
-        AccountStudentFee::where('year_id',$request->year_id)->where('class_id',$request->class_id)->where('fee_category_id',$request->fee_category_id)->where('date',$date)->delete();
+        AccountEmployeeSalary::where('date',$date)->delete();
         $checkdata = $request->checkmanage;
         if($checkdata!=null)
         {
             for ($i=0; $i <count($checkdata) ; $i++) {
-                $data = new AccountStudentFee();
-                $data->year_id = $request->year_id;
-                $data->class_id = $request->class_id;
+                $data = new AccountEmployeeSalary();
                 $data->date = $date;
-                $data->fee_category_id = $request->fee_category_id;
-                $data->student_id = $request->student_id[$checkdata[$i]];
+                $data->employee_id = $request->employee_id[$checkdata[$i]];
                 $data->amount = $request->amount[$checkdata[$i]];
                 $data->save();
             }
         }
         if(!empty(@$data) || empty($checkdata))
         {
-            return redirect()->route('accounts.fee.view')->with('success','Student Fee updated sucessfully');
+            return redirect()->route('accounts.salary.view')->with('success','Employee updated sucessfully');
         }
         else
         {
-            return redirect()->back()->with('error','No student have saved');
+            return redirect()->back()->with('error','No Employee have saved');
         }
     }
 

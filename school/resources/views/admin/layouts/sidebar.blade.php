@@ -367,6 +367,12 @@
                       </a>
                     </li>
 
+                    <li class="nav-item">
+                        <a href="{{route('reports.attendence.view')}}" class="nav-link {{$route=='reports.attendence.view'?'active':''}}">
+                          <i class="far fa-circle nav-icon"></i>
+                          <p>Attendence Report</p>
+                        </a>
+                      </li>
                   </ul>
             </li>
 

@@ -31,7 +31,7 @@
                 <a href="#" class="nav-link">
                   <i class="nav-icon fas fa-copy"></i>
                   <p>
-                    Manage User
+                    User Management
                     <i class="fas fa-angle-left right"></i>
                     {{-- <span class="badge badge-info right">6</span> --}}
                   </p>
@@ -50,7 +50,7 @@
                 <a href="#" class="nav-link">
                   <i class="nav-icon fas fa-copy"></i>
                   <p>
-                    Manage Profile
+                    Profile Management
                     <i class="fas fa-angle-left right"></i>
                     {{-- <span class="badge badge-info right">6</span> --}}
                   </p>
@@ -76,7 +76,7 @@
                 <a href="#" class="nav-link">
                   <i class="nav-icon fas fa-copy"></i>
                   <p>
-                    Manage Logo
+                    Logo Management
                     <i class="fas fa-angle-left right"></i>
                     {{-- <span class="badge badge-info right">6</span> --}}
                   </p>
@@ -95,7 +95,7 @@
                 <a href="#" class="nav-link">
                   <i class="nav-icon fas fa-copy"></i>
                   <p>
-                    Manage Setup
+                    Setup Manage
                     <i class="fas fa-angle-left right"></i>
                     {{-- <span class="badge badge-info right">6</span> --}}
                   </p>
@@ -178,7 +178,7 @@
                 <a href="#" class="nav-link">
                   <i class="nav-icon fas fa-copy"></i>
                   <p>
-                    Manage Students
+                    Students Management
                     <i class="fas fa-angle-left right"></i>
                   </p>
                 </a>
@@ -233,18 +233,18 @@
                 <a href="#" class="nav-link">
                   <i class="nav-icon fas fa-copy"></i>
                   <p>
-                    Manage Employees
+                    Employee Management
                     <i class="fas fa-angle-left right"></i>
                   </p>
                 </a>
 
                 <ul class="nav nav-treeview">
-                  <li class="nav-item">
-                    <a href="{{route('employees.registration.view')}}" class="nav-link {{$route=='employees.registration.view'?'active':''}}">
-                      <i class="far fa-circle nav-icon"></i>
-                      <p>Employee Registration</p>
-                    </a>
-                  </li>
+                    <li class="nav-item">
+                        <a href="{{route('employees.registration.view')}}" class="nav-link {{$route=='employees.registration.view'?'active':''}}">
+                        <i class="far fa-circle nav-icon"></i>
+                        <p>Employee Registration</p>
+                        </a>
+                    </li>
 
 
 
@@ -288,7 +288,7 @@
                 <a href="#" class="nav-link">
                     <i class="nav-icon fas fa-copy"></i>
                     <p>
-                      Manage Marks
+                      Marks Management
                       <i class="fas fa-angle-left right"></i>
                     </p>
                   </a>
@@ -321,7 +321,7 @@
                 <a href="#" class="nav-link">
                     <i class="nav-icon fas fa-copy"></i>
                     <p>
-                      Manage Account
+                      Account Management
                       <i class="fas fa-angle-left right"></i>
                     </p>
                   </a>
@@ -349,6 +349,27 @@
                     </li>
                   </ul>
             </li>
+
+            <li class="nav-item has-treeview {{$prefix=='/reports'?'menu-open':''}}">
+                <a href="#" class="nav-link">
+                    <i class="nav-icon fas fa-copy"></i>
+                    <p>
+                      Reports Management
+                      <i class="fas fa-angle-left right"></i>
+                    </p>
+                  </a>
+
+                  <ul class="nav nav-treeview">
+                    <li class="nav-item">
+                      <a href="{{route('reports.profit.view')}}" class="nav-link {{$route=='reports.profit.view'?'active':''}}">
+                        <i class="far fa-circle nav-icon"></i>
+                        <p>Monthly Profit</p>
+                      </a>
+                    </li>
+
+                  </ul>
+            </li>
+
         </ul>
     </nav>
 </aside>

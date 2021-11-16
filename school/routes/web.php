@@ -267,16 +267,26 @@ Route::group(['middleware'=>'auth'],function () {
         /*Other Cost*/
     });
 
+
+    Route::prefix('reports')->group(function(){
+        /*Profit*/
+        Route::get('/profit/view',[\App\Http\Controllers\Admin\Report\PorfitController::class,'index'])->name('reports.profit.view');
+        Route::get('/profit/create',[\App\Http\Controllers\Admin\Report\PorfitController::class,'getProfit'])->name('reports.profit.datewise.get');
+        Route::post('/profit/pdf',[\App\Http\Controllers\Admin\Report\PorfitController::class,'store'])->name('reports.profit.pdf');
+        /*Profit*/
+    });
+
+
     Route::get('/get-student',[\App\Http\Controllers\Admin\DefaultController::class,'getStudent'])->name('get-student');
     Route::get('/get-subject',[\App\Http\Controllers\Admin\DefaultController::class,'getSubject'])->name('get-subject');
     Route::get('/get-student-mark',[\App\Http\Controllers\Admin\DefaultController::class,'getMark'])->name('get-student-mark');
     /*Student Fee*/
     Route::get('/get-student-account-fee',[\App\Http\Controllers\Admin\DefaultController::class,'getAccountFee'])->name('get-student-account-fee');
     /*Student Fee*/
+
     /*Employee Salary*/
     Route::get('/get-employee-account-salary',[\App\Http\Controllers\Admin\DefaultController::class,'getAccountSalary'])->name('get-employee-account-salary');
     /*Employee Salary*/
-
 });
 
 

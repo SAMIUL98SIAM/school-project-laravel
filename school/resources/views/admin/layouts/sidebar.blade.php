@@ -340,6 +340,13 @@
                           <p>Employee Salary</p>
                         </a>
                     </li>
+
+                    <li class="nav-item">
+                        <a href="{{route('accounts.cost.view')}}" class="nav-link {{$route=='accounts.cost.view'?'active':''}}">
+                          <i class="far fa-circle nav-icon"></i>
+                          <p>Other Cost</p>
+                        </a>
+                    </li>
                   </ul>
             </li>
         </ul>

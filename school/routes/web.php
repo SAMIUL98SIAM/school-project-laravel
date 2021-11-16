@@ -257,6 +257,14 @@ Route::group(['middleware'=>'auth'],function () {
         Route::get('/employee/salary/create',[\App\Http\Controllers\Admin\Account\EmployeeSalaryController::class,'create'])->name('accounts.salary.create');
         Route::post('/employee/salary/create',[\App\Http\Controllers\Admin\Account\EmployeeSalaryController::class,'store'])->name('accounts.salary.store');
         /*Employee Salary*/
+
+        /*Other Cost*/
+        Route::get('cost/view',[\App\Http\Controllers\Admin\Account\OtherCostController::class,'index'])->name('accounts.cost.view');
+        Route::get('cost/create',[\App\Http\Controllers\Admin\Account\OtherCostController::class,'create'])->name('accounts.cost.create');
+        Route::post('cost/create',[\App\Http\Controllers\Admin\Account\OtherCostController::class,'store'])->name('accounts.cost.store');
+        Route::get('cost/edit/{id}',[\App\Http\Controllers\Admin\Account\OtherCostController::class,'edit'])->name('accounts.cost.edit');
+        Route::post('cost/update/{id}',[\App\Http\Controllers\Admin\Account\OtherCostController::class,'update'])->name('accounts.cost.update');
+        /*Other Cost*/
     });
 
     Route::get('/get-student',[\App\Http\Controllers\Admin\DefaultController::class,'getStudent'])->name('get-student');
@@ -265,7 +273,6 @@ Route::group(['middleware'=>'auth'],function () {
     /*Student Fee*/
     Route::get('/get-student-account-fee',[\App\Http\Controllers\Admin\DefaultController::class,'getAccountFee'])->name('get-student-account-fee');
     /*Student Fee*/
-
     /*Employee Salary*/
     Route::get('/get-employee-account-salary',[\App\Http\Controllers\Admin\DefaultController::class,'getAccountSalary'])->name('get-employee-account-salary');
     /*Employee Salary*/

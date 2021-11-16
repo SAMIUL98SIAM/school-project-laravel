@@ -272,7 +272,7 @@ Route::group(['middleware'=>'auth'],function () {
         /*Profit*/
         Route::get('/profit/view',[\App\Http\Controllers\Admin\Report\PorfitController::class,'index'])->name('reports.profit.view');
         Route::get('/profit/create',[\App\Http\Controllers\Admin\Report\PorfitController::class,'getProfit'])->name('reports.profit.datewise.get');
-        Route::post('/profit/pdf',[\App\Http\Controllers\Admin\Report\PorfitController::class,'store'])->name('reports.profit.pdf');
+        Route::get('/profit/pdf',[\App\Http\Controllers\Admin\Report\PorfitController::class,'pdf'])->name('reports.profit.pdf');
         /*Profit*/
     });
 

@@ -47,7 +47,7 @@ class PorfitController extends Controller
         $html['tdsource'] .='<td>'.$total_cost.'</td>' ;
         $html['tdsource'] .='<td>'.$profit.'</td>' ;
         $html['tdsource'] .='<td>' ;
-        $html['tdsource'] .='<a class="btn btn-sm btn-'.$color.'" title="PDG" target="_blank" href="'.route("students.monthly.fee.payslip").'?start_date='.$sdate.'&end_date='.$edate.'"><i class="fa fa-file"></i></a>' ;
+        $html['tdsource'] .='<a class="btn btn-sm btn-'.$color.'" title="PDF" target="_blank" href="'.route("reports.profit.pdf").'?start_date='.$sdate.'&end_date='.$edate.'"><i class="fa fa-file"></i></a>' ;
         $html['tdsource'] .='</td>' ;
         return response()->json(@$html);
     }
@@ -97,16 +97,14 @@ class PorfitController extends Controller
      //
     }
 
-    public function payslip(Request $request, $employee_id)
+    public function pdf(Request $request)
     {
-        // $id = EmployeeAttendence::where('employee_id',$employee_id)->first();
-        // $date = date('Y-m',strtotime($id->date));
-        // if($date != ''){
-        //     $where[] = ['date','like',$date.'%'];
-        // }
-        // $data['totalattendgroupbyid'] = EmployeeAttendence::with(['user'])->where($where)->where('employee_id',$id->employee_id)->get();
-        // $pdf = PDF::loadView('admin.employee.employee_monthlysalary.monthlysalary_details_pdf', $data);
-        // $pdf->SetProtection(['copy','print'],'','pass');
-        // return $pdf->stream('document.pdf');
+        $data['sdate'] = date('Y-m',strtotime($request->start_date));
+        $data['edate'] = date('Y-m',strtotime($request->end_date));
+        $data['start_date'] = date('Y-m-d',strtotime($request->start_date));
+        $data['end_date'] = date('Y-m-d',strtotime($request->end_date));
+        $pdf = PDF::loadView('admin.report.profit.pdf', $data);
+        $pdf->SetProtection(['copy','print'],'','pass');
+        return $pdf->stream('document.pdf');
     }
 }

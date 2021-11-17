@@ -105,6 +105,7 @@
                                         </tbody>
                                     </table>
                                 </div><br/>
+
                             </div><br/>
 
 
@@ -225,7 +226,7 @@
                                 </div>
                                 <div class="col-md-4">
                                     <hr style="border: solid 1px; width:60%; color:#000; margin-bottom: -3px;">
-                                    <div class="text-center">Principal/Headmaster</div>
+                                    <div class="text-center">Principal</div>
                                 </div>
                             </div>
                         </div>

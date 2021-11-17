@@ -94,7 +94,7 @@ class PorfitController extends Controller
      */
     public function destroy($id)
     {
-        //
+     //
     }
 
     public function pdf(Request $request)

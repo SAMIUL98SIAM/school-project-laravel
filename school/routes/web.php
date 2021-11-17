@@ -275,11 +275,17 @@ Route::group(['middleware'=>'auth'],function () {
         Route::get('/profit/pdf',[\App\Http\Controllers\Admin\Report\PorfitController::class,'pdf'])->name('reports.profit.pdf');
         /*Profit*/
 
-         /*Attendence*/
-         Route::get('/attendence/view',[\App\Http\Controllers\Admin\Report\AttendenceController::class,'index'])->name('reports.attendence.view');
-         Route::get('/attendence/create',[\App\Http\Controllers\Admin\Report\AttendenceController::class,'getAttendence'])->name('reports.attendence.get');
-         Route::get('/attendence/pdf',[\App\Http\Controllers\Admin\Report\AttendenceController::class,'pdf'])->name('reports.attendence.pdf');
-         /*Attendence*/
+        /*Marksheet*/
+        Route::get('/marksheet/view',[\App\Http\Controllers\Admin\Report\MarksheetController::class,'index'])->name('reports.marksheet.view');
+        Route::get('/marksheet/create',[\App\Http\Controllers\Admin\Report\MarksheetController::class,'getMarksheet'])->name('reports.marksheet.get');
+        Route::get('/marksheet/pdf',[\App\Http\Controllers\Admin\Report\MarksheetController::class,'pdf'])->name('reports.marksheet.pdf');
+        /*Marksheet*/
+
+        /*Attendence*/
+        Route::get('/attendence/view',[\App\Http\Controllers\Admin\Report\AttendenceController::class,'index'])->name('reports.attendence.view');
+        Route::get('/attendence/create',[\App\Http\Controllers\Admin\Report\AttendenceController::class,'getAttendence'])->name('reports.attendence.get');
+        Route::get('/attendence/pdf',[\App\Http\Controllers\Admin\Report\AttendenceController::class,'pdf'])->name('reports.attendence.pdf');
+        /*Attendence*/
     });
 
 

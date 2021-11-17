@@ -359,7 +359,7 @@
                     </p>
                   </a>
 
-                  <ul class="nav nav-treeview">
+                <ul class="nav nav-treeview">
                     <li class="nav-item">
                       <a href="{{route('reports.profit.view')}}" class="nav-link {{$route=='reports.profit.view'?'active':''}}">
                         <i class="far fa-circle nav-icon"></i>
@@ -368,12 +368,21 @@
                     </li>
 
                     <li class="nav-item">
+                        <a href="{{route('reports.marksheet.view')}}" class="nav-link {{$route=='reports.marksheet.view'?'active':''}}">
+                          <i class="far fa-circle nav-icon"></i>
+                          <p>Marksheet</p>
+                        </a>
+                    </li>
+
+
+                    <li class="nav-item">
                         <a href="{{route('reports.attendence.view')}}" class="nav-link {{$route=='reports.attendence.view'?'active':''}}">
                           <i class="far fa-circle nav-icon"></i>
                           <p>Attendence Report</p>
                         </a>
-                      </li>
-                  </ul>
+                    </li>
+
+                </ul>
             </li>
 
         </ul>

@@ -50,13 +50,13 @@
                         </thead>
                         <tbody>
                             @foreach ($allData as $key=>$data)
-                            <tr>
+                            <tr class="{{$data->id}}">
                                 <td>{{$key+1}}</td>
                                 <td>{{$data->grade_name}}</td>
-                                <td>{{$data->grade_point}}</td>
+                                <td>{{number_format((float)$data->grade_point,2)}}</td>
                                 <td>{{$data->start_marks}}</td>
                                 <td>{{$data->end_marks}}</td>
-                                <td>{{$data->start_point}} - {{$data->end_point}}</td>
+                                <td>{{number_format((float)$data->start_point,2)}} - {{number_format((float)$data->end_point,2)}}</td>
                                 <td>{{$data->remarks}}</td>
                                 <td>
                                     <a title="Edit" class="btn btn-sm btn-primary" href="{{route('marks.grade.edit',$data->id)}}"><i class="fa fa-edit"></i></a>

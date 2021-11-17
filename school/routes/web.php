@@ -286,6 +286,13 @@ Route::group(['middleware'=>'auth'],function () {
         Route::get('/attendence/create',[\App\Http\Controllers\Admin\Report\AttendenceController::class,'getAttendence'])->name('reports.attendence.get');
         Route::get('/attendence/pdf',[\App\Http\Controllers\Admin\Report\AttendenceController::class,'pdf'])->name('reports.attendence.pdf');
         /*Attendence*/
+
+
+        /*Result*/
+        Route::get('/result/view',[\App\Http\Controllers\Admin\Report\ResultController::class,'index'])->name('reports.result.view');
+        Route::get('/result/create',[\App\Http\Controllers\Admin\Report\ResultController::class,'getResult'])->name('reports.result.get');
+        Route::get('/result/pdf',[\App\Http\Controllers\Admin\Report\ResultController::class,'pdf'])->name('reports.result.pdf');
+        /*Result*/
     });
 
 

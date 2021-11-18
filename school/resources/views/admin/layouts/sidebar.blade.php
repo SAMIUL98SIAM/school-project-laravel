@@ -389,6 +389,14 @@
                         </a>
                     </li>
 
+
+                    <li class="nav-item">
+                        <a href="{{route('reports.id-card.view')}}" class="nav-link {{$route=='reports.id-card.view'?'active':''}}">
+                          <i class="far fa-circle nav-icon"></i>
+                          <p>ID Card</p>
+                        </a>
+                    </li>
+
                 </ul>
             </li>
 

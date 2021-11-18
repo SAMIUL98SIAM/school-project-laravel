@@ -293,6 +293,12 @@ Route::group(['middleware'=>'auth'],function () {
         Route::get('/result/create',[\App\Http\Controllers\Admin\Report\ResultController::class,'getResult'])->name('reports.result.get');
         Route::get('/result/pdf',[\App\Http\Controllers\Admin\Report\ResultController::class,'pdf'])->name('reports.result.pdf');
         /*Result*/
+
+         /*ID Card*/
+         Route::get('/id-card/view',[\App\Http\Controllers\Admin\Report\IdCardController::class,'index'])->name('reports.id-card.view');
+         Route::get('/id-card/create',[\App\Http\Controllers\Admin\Report\IdCardController::class,'getIdCard'])->name('reports.id-card.get');
+         Route::get('/id-card/pdf',[\App\Http\Controllers\Admin\Report\IdCardController::class,'pdf'])->name('reports.id-card.pdf');
+         /*ID Card*/
     });
 
 

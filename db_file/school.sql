@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 10, 2021 at 10:25 AM
+-- Generation Time: Nov 18, 2021 at 02:24 PM
 -- Server version: 10.4.17-MariaDB
 -- PHP Version: 7.3.26
 
@@ -20,6 +20,85 @@ SET time_zone = "+00:00";
 --
 -- Database: `school`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `account_employee_salaries`
+--
+
+CREATE TABLE `account_employee_salaries` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `employee_id` int(11) NOT NULL COMMENT 'employee_id=user_id',
+  `date` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `amount` double DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `account_employee_salaries`
+--
+
+INSERT INTO `account_employee_salaries` (`id`, `employee_id`, `date`, `amount`, `created_at`, `updated_at`) VALUES
+(2, 13, '2021-11', 2900, '2021-11-15 12:06:15', '2021-11-15 12:06:15'),
+(3, 14, '2021-11', 3266.6666666667, '2021-11-15 12:06:15', '2021-11-15 12:06:15'),
+(4, 12, '2021-12', 3000, '2021-11-15 12:08:16', '2021-11-15 12:08:16');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `account_other_costs`
+--
+
+CREATE TABLE `account_other_costs` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `date` date DEFAULT NULL,
+  `amount` double DEFAULT NULL,
+  `description` longtext COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `image` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `account_other_costs`
+--
+
+INSERT INTO `account_other_costs` (`id`, `date`, `amount`, `description`, `image`, `created_at`, `updated_at`) VALUES
+(1, '2021-11-03', 200, 'market 1 pcs', '202111160921download.png', '2021-11-16 03:09:32', '2021-11-16 03:21:30'),
+(2, '2002-11-14', 300, 'Sports Item', '202111161210257100987_413178713805506_6207426460791218958_n.jpg', '2021-11-16 03:21:54', '2021-11-16 06:10:02');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `account_student_fees`
+--
+
+CREATE TABLE `account_student_fees` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `year_id` int(11) DEFAULT NULL,
+  `class_id` int(11) DEFAULT NULL,
+  `student_id` int(11) DEFAULT NULL,
+  `fee_category_id` int(11) DEFAULT NULL,
+  `date` varchar(111) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `amount` double DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `account_student_fees`
+--
+
+INSERT INTO `account_student_fees` (`id`, `year_id`, `class_id`, `student_id`, `fee_category_id`, `date`, `amount`, `created_at`, `updated_at`) VALUES
+(3, 2, 2, 4, 2, '2021-12', 139.26, '2021-11-15 07:15:03', '2021-11-15 07:15:03'),
+(4, 2, 2, 10, 2, '2021-11', 139.26, '2021-11-15 10:17:29', '2021-11-15 10:17:29'),
+(5, 2, 2, 4, 2, '2021-11', 139.26, '2021-11-15 10:17:29', '2021-11-15 10:17:29'),
+(6, 2, 5, 11, 3, '2021-11', 400, '2021-11-15 10:20:14', '2021-11-15 10:20:14'),
+(7, 2, 3, 8, 2, '2021-11', 337.26, '2021-11-16 06:27:43', '2021-11-16 06:27:43'),
+(8, 2, 1, 5, 1, '2021-11', 132, '2021-11-17 14:17:18', '2021-11-17 14:17:18'),
+(9, 2, 1, 16, 1, '2021-11', 158, '2021-11-17 14:17:18', '2021-11-17 14:17:18');
 
 -- --------------------------------------------------------
 
@@ -51,9 +130,10 @@ INSERT INTO `assign_students` (`id`, `student_id`, `roll`, `class_id`, `year_id`
 (5, 8, 1, 3, 2, NULL, NULL, '2021-11-06 14:52:09', '2021-11-09 13:23:04'),
 (6, 9, NULL, 5, 1, NULL, NULL, '2021-11-06 15:23:30', '2021-11-06 15:23:30'),
 (7, 10, 1, 2, 2, NULL, NULL, '2021-11-06 23:57:39', '2021-11-09 13:22:45'),
-(8, 11, NULL, 3, 1, NULL, NULL, '2021-11-07 01:59:47', '2021-11-07 01:59:47'),
+(8, 11, 1, 3, 1, NULL, NULL, '2021-11-07 01:59:47', '2021-11-12 03:54:54'),
 (9, 11, 1, 5, 2, NULL, NULL, '2021-11-07 02:01:17', '2021-11-08 04:17:33'),
-(10, 4, 2, 2, 2, NULL, NULL, '2021-11-07 11:34:48', '2021-11-09 13:22:45');
+(10, 4, 2, 2, 2, NULL, NULL, '2021-11-07 11:34:48', '2021-11-09 13:22:45'),
+(12, 16, NULL, 1, 2, NULL, NULL, '2021-11-17 14:16:37', '2021-11-17 14:16:37');
 
 -- --------------------------------------------------------
 
@@ -87,7 +167,14 @@ INSERT INTO `assign_subjects` (`id`, `class_id`, `subject_id`, `full_mark`, `pas
 (18, 1, 2, 100, 33, 100, '2021-11-05 06:54:24', '2021-11-05 06:54:24'),
 (19, 1, 4, 100, 33, 100, '2021-11-05 06:54:24', '2021-11-05 06:54:24'),
 (28, 3, 1, 100, 33, 100, '2021-11-05 06:57:26', '2021-11-05 06:57:26'),
-(29, 3, 4, 100, 33, 100, '2021-11-05 06:57:26', '2021-11-05 06:57:26');
+(29, 3, 4, 100, 33, 100, '2021-11-05 06:57:26', '2021-11-05 06:57:26'),
+(30, 7, 1, 100, 50, 100, '2021-11-13 01:23:37', '2021-11-13 01:23:37'),
+(31, 7, 2, 100, 50, 100, '2021-11-13 01:23:37', '2021-11-13 01:23:37'),
+(33, 7, 4, 100, 50, 100, '2021-11-13 01:23:37', '2021-11-13 01:23:37'),
+(36, 7, 3, 100, 50, 100, '2021-11-13 01:26:40', '2021-11-13 01:26:40'),
+(37, 1, 7, 100, 33, 100, '2021-11-16 10:10:15', '2021-11-16 10:10:15'),
+(38, 2, 1, 100, 33, 100, '2021-11-17 13:15:36', '2021-11-17 13:15:36'),
+(39, 2, 7, 100, 33, 100, '2021-11-17 13:15:36', '2021-11-17 13:15:36');
 
 -- --------------------------------------------------------
 
@@ -165,7 +252,77 @@ INSERT INTO `discount_students` (`id`, `assign_student_id`, `fee_category_id`, `
 (7, 7, 1, 34, '2021-11-06 23:57:39', '2021-11-06 23:57:39'),
 (8, 8, 1, 32, '2021-11-07 01:59:47', '2021-11-07 01:59:47'),
 (9, 9, 1, 0, '2021-11-07 02:01:17', '2021-11-07 02:01:17'),
-(10, 10, 1, 34, '2021-11-07 11:34:48', '2021-11-07 11:34:48');
+(10, 10, 1, 34, '2021-11-07 11:34:48', '2021-11-07 11:34:48'),
+(12, 12, 1, 21, '2021-11-17 14:16:37', '2021-11-17 14:16:37');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `employee_attendences`
+--
+
+CREATE TABLE `employee_attendences` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `employee_id` int(11) NOT NULL COMMENT 'employee_id=user_id',
+  `date` date NOT NULL,
+  `attend_status` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `employee_attendences`
+--
+
+INSERT INTO `employee_attendences` (`id`, `employee_id`, `date`, `attend_status`, `created_at`, `updated_at`) VALUES
+(21, 12, '2021-11-12', 'Present', '2021-11-11 16:15:27', '2021-11-11 16:15:27'),
+(22, 13, '2021-11-12', 'Present', '2021-11-11 16:15:27', '2021-11-11 16:15:27'),
+(23, 14, '2021-11-12', 'Absent', '2021-11-11 16:15:28', '2021-11-11 16:15:28'),
+(24, 15, '2021-11-12', 'Present', '2021-11-11 16:15:28', '2021-11-11 16:15:28'),
+(25, 12, '2021-11-13', 'Present', '2021-11-11 16:15:54', '2021-11-11 16:15:54'),
+(26, 13, '2021-11-13', 'Absent', '2021-11-11 16:15:54', '2021-11-11 16:15:54'),
+(27, 14, '2021-11-13', 'Present', '2021-11-11 16:15:54', '2021-11-11 16:15:54'),
+(28, 15, '2021-11-13', 'Present', '2021-11-11 16:15:54', '2021-11-11 16:15:54'),
+(29, 12, '2021-11-14', 'Present', '2021-11-11 16:16:15', '2021-11-11 16:16:15'),
+(30, 13, '2021-11-14', 'Present', '2021-11-11 16:16:15', '2021-11-11 16:16:15'),
+(31, 14, '2021-11-14', 'Absent', '2021-11-11 16:16:15', '2021-11-11 16:16:15'),
+(32, 15, '2021-11-14', 'Absent', '2021-11-11 16:16:15', '2021-11-11 16:16:15'),
+(37, 12, '2021-11-16', 'Present', '2021-11-16 09:38:02', '2021-11-16 09:38:02'),
+(38, 13, '2021-11-16', 'Absent', '2021-11-16 09:38:02', '2021-11-16 09:38:02'),
+(39, 14, '2021-11-16', 'Present', '2021-11-16 09:38:02', '2021-11-16 09:38:02'),
+(40, 15, '2021-11-16', 'Leave', '2021-11-16 09:38:02', '2021-11-16 09:38:02'),
+(41, 12, '2021-12-02', 'Present', '2021-11-16 09:38:16', '2021-11-16 09:38:16'),
+(42, 13, '2021-12-02', 'Present', '2021-11-16 09:38:16', '2021-11-16 09:38:16'),
+(43, 14, '2021-12-02', 'Present', '2021-11-16 09:38:16', '2021-11-16 09:38:16'),
+(44, 15, '2021-12-02', 'Present', '2021-11-16 09:38:16', '2021-11-16 09:38:16'),
+(49, 12, '2021-11-18', 'Present', '2021-11-17 12:18:01', '2021-11-17 12:18:01'),
+(50, 13, '2021-11-18', 'Present', '2021-11-17 12:18:01', '2021-11-17 12:18:01'),
+(51, 14, '2021-11-18', 'Present', '2021-11-17 12:18:01', '2021-11-17 12:18:01'),
+(52, 15, '2021-11-18', 'Present', '2021-11-17 12:18:01', '2021-11-17 12:18:01');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `employee_leaves`
+--
+
+CREATE TABLE `employee_leaves` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `employee_id` int(11) NOT NULL COMMENT 'employee_id=user_id',
+  `leave_purpose_id` int(11) NOT NULL,
+  `start_date` date NOT NULL,
+  `end_date` date NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `employee_leaves`
+--
+
+INSERT INTO `employee_leaves` (`id`, `employee_id`, `leave_purpose_id`, `start_date`, `end_date`, `created_at`, `updated_at`) VALUES
+(1, 12, 3, '2021-11-10', '2021-11-10', '2021-11-10 07:16:11', '2021-11-11 03:47:15'),
+(2, 13, 1, '2021-11-13', '2021-11-13', '2021-11-10 07:18:33', '2021-11-11 03:47:06');
 
 -- --------------------------------------------------------
 
@@ -195,7 +352,9 @@ INSERT INTO `employee_salary_logs` (`id`, `employee_id`, `previous_salary`, `pre
 (4, 15, 3000, 3000, 0, '2021-11-08', '2021-11-09 22:43:07', '2021-11-09 22:43:07'),
 (5, 15, 3000, 4000, 1000, '2021-11-10', '2021-11-10 01:12:20', '2021-11-10 01:12:20'),
 (6, 14, 3000, 3500, 500, '2021-11-11', '2021-11-10 01:14:42', '2021-11-10 01:14:42'),
-(7, 15, 4000, 5500, 1500, '2022-05-19', '2021-11-10 01:52:13', '2021-11-10 01:52:13');
+(7, 15, 4000, 5500, 1500, '2022-05-19', '2021-11-10 01:52:13', '2021-11-10 01:52:13'),
+(8, 12, 3000, 3000, 0, '2021-12-03', '2021-11-15 11:38:05', '2021-11-15 11:38:05'),
+(9, 13, 3000, 3100, 100, '2021-12-18', '2021-11-17 12:14:55', '2021-11-17 12:14:55');
 
 -- --------------------------------------------------------
 
@@ -323,6 +482,29 @@ INSERT INTO `groups` (`id`, `name`, `created_at`, `updated_at`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `leave_purposes`
+--
+
+CREATE TABLE `leave_purposes` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `leave_purposes`
+--
+
+INSERT INTO `leave_purposes` (`id`, `name`, `created_at`, `updated_at`) VALUES
+(1, 'Family Problem', NULL, NULL),
+(2, 'Personal Problem', NULL, NULL),
+(3, 'Physical Problm', '2021-11-10 07:18:32', '2021-11-10 07:18:32'),
+(4, 'dummy', '2021-11-10 07:55:01', '2021-11-10 07:55:01');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `logos`
 --
 
@@ -340,7 +522,39 @@ CREATE TABLE `logos` (
 --
 
 INSERT INTO `logos` (`id`, `image`, `created_by`, `updated_by`, `created_at`, `updated_at`) VALUES
-(7, '2021111004091.jpg', 1, 1, '2021-11-09 13:15:16', '2021-11-09 22:09:55');
+(9, '202111171802257100987_413178713805506_6207426460791218958_n.jpg', 1, NULL, '2021-11-17 12:02:16', '2021-11-17 12:02:16');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `marks_grades`
+--
+
+CREATE TABLE `marks_grades` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `grade_name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `grade_point` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `start_marks` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `end_marks` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `start_point` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `end_point` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `remarks` varchar(111) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `marks_grades`
+--
+
+INSERT INTO `marks_grades` (`id`, `grade_name`, `grade_point`, `start_marks`, `end_marks`, `start_point`, `end_point`, `remarks`, `created_at`, `updated_at`) VALUES
+(1, 'A+', '5', '80', '100', '5', '5', 'Excellent', '2021-11-13 06:49:52', '2021-11-17 08:34:33'),
+(2, 'A', '4', '70', '79', '4', '4.99', 'Very Good', '2021-11-13 07:01:42', '2021-11-17 08:34:59'),
+(3, 'A-', '3.5', '60', '69', '3.5', '3.99', 'Good', '2021-11-17 08:35:32', '2021-11-17 08:36:43'),
+(4, 'B', '3', '50', '59', '3', '3.49', 'Average', '2021-11-17 08:36:23', '2021-11-17 08:36:23'),
+(5, 'C', '2', '40', '49', '2', '2.99', 'Disappoint', '2021-11-17 08:37:17', '2021-11-17 08:37:17'),
+(6, 'D', '1', '33', '39', '1', '1.99', 'Bad', '2021-11-17 08:37:46', '2021-11-17 08:37:46'),
+(7, 'F', '0', '00', '32', '0', '0.99', 'Fail', '2021-11-17 08:38:27', '2021-11-17 08:38:27');
 
 -- --------------------------------------------------------
 
@@ -377,7 +591,15 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 (19, '2014_10_12_000000_create_users_table', 15),
 (20, '2021_11_05_165632_create_assign_students_table', 16),
 (21, '2021_11_05_165922_create_discount_students_table', 16),
-(22, '2021_11_09_152336_create_employee_salary_logs_table', 17);
+(22, '2021_11_09_152336_create_employee_salary_logs_table', 17),
+(23, '2021_11_10_121020_create_leave_purposes_table', 18),
+(24, '2021_11_10_121218_create_employee_leaves_table', 18),
+(25, '2021_11_11_092053_create_employee_attendences_table', 19),
+(26, '2021_11_12_153941_create_student_marks_table', 20),
+(27, '2021_11_13_100214_create_marks_grades_table', 21),
+(28, '2021_11_14_083700_create_account_student_fees_table', 22),
+(29, '2021_11_15_165248_create_account_employee_salaries_table', 23),
+(30, '2021_11_16_081330_create_account_other_costs_table', 24);
 
 -- --------------------------------------------------------
 
@@ -437,6 +659,47 @@ INSERT INTO `student_classes` (`id`, `name`, `created_at`, `updated_at`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `student_marks`
+--
+
+CREATE TABLE `student_marks` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `student_id` int(11) NOT NULL COMMENT 'student_id=user_id',
+  `id_no` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `year_id` int(11) DEFAULT NULL,
+  `class_id` int(11) DEFAULT NULL,
+  `assign_subject_id` int(11) DEFAULT NULL,
+  `exam_type_id` int(11) DEFAULT NULL,
+  `marks` double DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `student_marks`
+--
+
+INSERT INTO `student_marks` (`id`, `student_id`, `id_no`, `year_id`, `class_id`, `assign_subject_id`, `exam_type_id`, `marks`, `created_at`, `updated_at`) VALUES
+(5, 10, '20200010', 2, 2, 9, 1, 90, '2021-11-13 03:37:16', '2021-11-13 03:37:16'),
+(6, 4, '20200001', 2, 2, 9, 1, 80, '2021-11-13 03:37:16', '2021-11-13 03:37:16'),
+(7, 5, '20200005', 2, 1, 17, 1, 87, '2021-11-13 23:08:54', '2021-11-13 23:08:54'),
+(11, 5, '20200005', 2, 1, 19, 1, 75, '2021-11-16 10:11:13', '2021-11-16 10:11:13'),
+(12, 5, '20200005', 2, 1, 37, 1, 81, '2021-11-16 10:12:45', '2021-11-16 10:12:45'),
+(13, 10, '20200010', 2, 2, 10, 1, 87, '2021-11-17 08:28:28', '2021-11-17 08:28:28'),
+(14, 4, '20200001', 2, 2, 10, 1, 75, '2021-11-17 08:28:28', '2021-11-17 08:28:28'),
+(15, 10, '20200010', 2, 2, 38, 1, 55, '2021-11-17 13:17:12', '2021-11-17 13:17:12'),
+(16, 4, '20200001', 2, 2, 38, 1, 78, '2021-11-17 13:17:12', '2021-11-17 13:17:12'),
+(17, 10, '20200010', 2, 2, 39, 1, 90, '2021-11-17 13:18:02', '2021-11-17 13:18:02'),
+(18, 4, '20200001', 2, 2, 39, 1, 45, '2021-11-17 13:18:02', '2021-11-17 13:18:02'),
+(20, 16, '20200012', 2, 1, 17, 1, 76, '2021-11-17 14:19:14', '2021-11-17 14:19:14'),
+(24, 16, '20200012', 2, 1, 19, 1, 90, '2021-11-17 14:21:20', '2021-11-17 14:21:20'),
+(25, 5, '20200005', 2, 1, 18, 1, 80, '2021-11-17 14:21:59', '2021-11-17 14:21:59'),
+(26, 16, '20200012', 2, 1, 18, 1, 85, '2021-11-17 14:21:59', '2021-11-17 14:21:59'),
+(28, 16, '20200012', 2, 1, 37, 1, 100, '2021-11-17 14:23:10', '2021-11-17 14:23:10');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `student_shifts`
 --
 
@@ -479,7 +742,8 @@ INSERT INTO `subjects` (`id`, `name`, `created_at`, `updated_at`) VALUES
 (3, 'Higher Math', '2021-11-04 11:01:23', '2021-11-04 11:01:23'),
 (4, 'Islamic Studies', '2021-11-05 03:12:32', '2021-11-05 03:12:32'),
 (5, 'Physics', '2021-11-05 03:12:41', '2021-11-05 03:12:41'),
-(6, 'Chemistry', '2021-11-05 03:12:55', '2021-11-05 03:12:55');
+(6, 'Chemistry', '2021-11-05 03:12:55', '2021-11-05 03:12:55'),
+(7, 'Mathemetics', '2021-11-16 10:10:00', '2021-11-16 10:10:00');
 
 -- --------------------------------------------------------
 
@@ -531,9 +795,10 @@ INSERT INTO `users` (`id`, `usertype`, `name`, `email`, `email_verified_at`, `pa
 (10, 'student', 'Sadia', NULL, NULL, '$2y$10$RV4qdblAq4kkA9coWQBOruAMY6gewitj/59VX/sDehYRaqgJqz5Y.', '01992569682', 'Miprur', 'Female', '20211107055811.jpg', 'Aminul rahman', 'momotaj', 'Islam', '20200010', '2003-02-12', '4176', NULL, NULL, NULL, NULL, 1, NULL, '2021-11-06 23:57:39', '2021-11-06 23:58:57'),
 (11, 'student', 'Sadia', NULL, NULL, '$2y$10$xCesQaUewxFwcMbaBqgGCOEM1IHjc0rNy2BSjQ0AFqMnqYbjAjPu2', '01992569682', 'Uttara, Dhaka', 'Male', '202111070800248792487_10159361662910991_302061953428786528_n.jpg', 'Aminul', 'yasmin', 'Islam', '20190011', '1970-01-01', '9032', NULL, NULL, NULL, NULL, 1, NULL, '2021-11-07 01:59:47', '2021-11-09 13:20:31'),
 (12, 'employee', 'Kamal', NULL, NULL, '$2y$10$Wyjc1gBSnZaGj8zoM34I/uIj2zh.q2r96GTsD/FuaTqtzPqghQgtS', '01992569682', 'Kishoreganj', 'Male', '202111091711254957367_10159740357804490_7510412032916547602_n.jpg', 'Jamal', 'Rahima', 'Islam', '2021070001', '1994-02-11', '3652', NULL, '2021-11-04', 2, 3000, 1, NULL, '2021-11-09 11:11:40', '2021-11-09 13:27:14'),
-(13, 'employee', 'jobbar Mia', NULL, NULL, '$2y$10$A2laHrF74C2zU6Fa.TDxF.wIeqNGeg0sr8QGn/6maiwU2HHS6MJ6.', '019925696821', 'Uttara, Dhaka', 'Male', '202111091842pp.jpg', 'Asad Mia', 'karima khatun', 'Islam', '2021070013', '1987-03-04', '2867', NULL, '2021-11-25', 1, 3000, 1, NULL, '2021-11-09 12:25:33', '2021-11-09 12:42:50'),
+(13, 'employee', 'jobbar Mia', NULL, NULL, '$2y$10$A2laHrF74C2zU6Fa.TDxF.wIeqNGeg0sr8QGn/6maiwU2HHS6MJ6.', '019925696821', 'Uttara, Dhaka', 'Male', '202111091842pp.jpg', 'Asad Mia', 'karima khatun', 'Islam', '2021070013', '1987-03-04', '2867', NULL, '2021-11-25', 1, 3100, 1, NULL, '2021-11-09 12:25:33', '2021-11-17 12:14:55'),
 (14, 'employee', 'Selina', NULL, NULL, '$2y$10$R0prBCAzPuCPF.c2Mw9IWOC8bZOtdAdGjaLgnu6Mp2.jxsnaDxMZa', '01992569667', 'Vatara', 'Female', '202111091832254957367_10159740357804490_7510412032916547602_n.jpg', 'Kuddus', 'Rina', 'Islam', '2021110014', '1999-02-02', '4477', NULL, '2021-11-10', 3, 3500, 1, NULL, '2021-11-09 12:32:47', '2021-11-10 01:14:42'),
-(15, 'employee', 'Salam mia', NULL, NULL, '$2y$10$.QkZm78RCRqgteKFBCBfP.T/hmhq/Gxp0jzaVL2VxU4iTAMn9aYiG', '01992569681', 'Rajshahi', 'Male', '2021111004431.jpg', 'Samad', 'Asma', 'Islam', '2021110015', '1976-02-03', '6589', NULL, '2021-11-08', 3, 5500, 1, NULL, '2021-11-09 22:43:07', '2021-11-10 01:52:13');
+(15, 'employee', 'Salam mia', NULL, NULL, '$2y$10$.QkZm78RCRqgteKFBCBfP.T/hmhq/Gxp0jzaVL2VxU4iTAMn9aYiG', '01992569681', 'Rajshahi', 'Male', '202111121616sa.jpg', 'Samad', 'Asma', 'Islam', '2021110015', '1976-02-03', '6589', NULL, '2021-11-08', 3, 5500, 1, NULL, '2021-11-09 22:43:07', '2021-11-12 10:16:08'),
+(16, 'student', 'Dalim', NULL, NULL, '$2y$10$qqQz6Mtb44W74ZYfMkomhulI8r7DEoKq9ZLNkGOBUV2nryRUgG5Sm', '01992569000', 'Comilla', 'Male', '2021111720165.PNG', 'Chan Mia', 'Nurjahan', 'Islam', '20200012', '2021-11-20', '3947', NULL, NULL, NULL, NULL, 1, NULL, '2021-11-17 14:16:37', '2021-11-17 14:16:37');
 
 -- --------------------------------------------------------
 
@@ -559,6 +824,24 @@ INSERT INTO `years` (`id`, `name`, `created_at`, `updated_at`) VALUES
 --
 -- Indexes for dumped tables
 --
+
+--
+-- Indexes for table `account_employee_salaries`
+--
+ALTER TABLE `account_employee_salaries`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `account_other_costs`
+--
+ALTER TABLE `account_other_costs`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `account_student_fees`
+--
+ALTER TABLE `account_student_fees`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `assign_students`
@@ -589,6 +872,18 @@ ALTER TABLE `designations`
 -- Indexes for table `discount_students`
 --
 ALTER TABLE `discount_students`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `employee_attendences`
+--
+ALTER TABLE `employee_attendences`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `employee_leaves`
+--
+ALTER TABLE `employee_leaves`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -632,9 +927,22 @@ ALTER TABLE `groups`
   ADD UNIQUE KEY `groups_name_unique` (`name`);
 
 --
+-- Indexes for table `leave_purposes`
+--
+ALTER TABLE `leave_purposes`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `leave_purposes_name_unique` (`name`);
+
+--
 -- Indexes for table `logos`
 --
 ALTER TABLE `logos`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `marks_grades`
+--
+ALTER TABLE `marks_grades`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -663,6 +971,12 @@ ALTER TABLE `personal_access_tokens`
 ALTER TABLE `student_classes`
   ADD PRIMARY KEY (`id`),
   ADD UNIQUE KEY `student_classes_name_unique` (`name`);
+
+--
+-- Indexes for table `student_marks`
+--
+ALTER TABLE `student_marks`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `student_shifts`
@@ -697,16 +1011,34 @@ ALTER TABLE `years`
 --
 
 --
+-- AUTO_INCREMENT for table `account_employee_salaries`
+--
+ALTER TABLE `account_employee_salaries`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
+-- AUTO_INCREMENT for table `account_other_costs`
+--
+ALTER TABLE `account_other_costs`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT for table `account_student_fees`
+--
+ALTER TABLE `account_student_fees`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+
+--
 -- AUTO_INCREMENT for table `assign_students`
 --
 ALTER TABLE `assign_students`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT for table `assign_subjects`
 --
 ALTER TABLE `assign_subjects`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=40;
 
 --
 -- AUTO_INCREMENT for table `communicates`
@@ -724,13 +1056,25 @@ ALTER TABLE `designations`
 -- AUTO_INCREMENT for table `discount_students`
 --
 ALTER TABLE `discount_students`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+
+--
+-- AUTO_INCREMENT for table `employee_attendences`
+--
+ALTER TABLE `employee_attendences`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=53;
+
+--
+-- AUTO_INCREMENT for table `employee_leaves`
+--
+ALTER TABLE `employee_leaves`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `employee_salary_logs`
 --
 ALTER TABLE `employee_salary_logs`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT for table `exam_types`
@@ -763,16 +1107,28 @@ ALTER TABLE `groups`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
+-- AUTO_INCREMENT for table `leave_purposes`
+--
+ALTER TABLE `leave_purposes`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
 -- AUTO_INCREMENT for table `logos`
 --
 ALTER TABLE `logos`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+
+--
+-- AUTO_INCREMENT for table `marks_grades`
+--
+ALTER TABLE `marks_grades`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `migrations`
 --
 ALTER TABLE `migrations`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
 
 --
 -- AUTO_INCREMENT for table `personal_access_tokens`
@@ -787,6 +1143,12 @@ ALTER TABLE `student_classes`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
+-- AUTO_INCREMENT for table `student_marks`
+--
+ALTER TABLE `student_marks`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
+
+--
 -- AUTO_INCREMENT for table `student_shifts`
 --
 ALTER TABLE `student_shifts`
@@ -796,13 +1158,13 @@ ALTER TABLE `student_shifts`
 -- AUTO_INCREMENT for table `subjects`
 --
 ALTER TABLE `subjects`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
 -- AUTO_INCREMENT for table `years`

@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\User;
+use Whoops\Run;
 
 class ProfileController extends Controller
 {
@@ -114,5 +115,25 @@ class ProfileController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+
+    public function passworView()
+    {
+        return view('admin.profile.edit_password');
+    }
+
+    public function passworUpdate(Request $request)
+    {
+        if(Auth::attempt(['id'=>Auth::user()->id,'password'=>$request->current_password])){
+            $user = User::find(Auth::user()->id);
+            $user->password = bcrypt($request->new_password);
+            $user->save();
+            return redirect()->route('profiles.view')->with('success','Password Changed Successfully');
+        }
+        else
+        {
+          return redirect()->back()->with('error','Sorry!! Your password does not match');
+        }
     }
 }

@@ -35,7 +35,6 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 
 Route::group(['middleware'=>'auth'],function () {
 
-
     Route::prefix('users')->group(function(){
         Route::get('/view',[\App\Http\Controllers\Admin\UserController::class,'index'])->name('users.view');
         Route::get('/create',[\App\Http\Controllers\Admin\UserController::class,'create'])->name('users.create');
@@ -48,6 +47,8 @@ Route::group(['middleware'=>'auth'],function () {
         Route::get('/view',[\App\Http\Controllers\Admin\ProfileController::class,'index'])->name('profiles.view');
         Route::get('/edit',[\App\Http\Controllers\Admin\ProfileController::class,'edit'])->name('profiles.edit');
         Route::post('/update',[\App\Http\Controllers\Admin\ProfileController::class,'update'])->name('profiles.update');
+        Route::get('/change-password',[\App\Http\Controllers\Admin\ProfileController::class,'passworView'])->name('profiles.change-password');
+        Route::post('/change-password/update',[\App\Http\Controllers\Admin\ProfileController::class,'passworUpdate'])->name('profiles.change-password.update');
     });
 
     Route::prefix('logos')->group(function(){

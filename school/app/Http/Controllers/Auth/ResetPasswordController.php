@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\ResetsPasswords;
+use  App\Models\User;
+use Illuminate\Support\Facades\Auth;
 
 class ResetPasswordController extends Controller
 {
@@ -27,4 +29,15 @@ class ResetPasswordController extends Controller
      * @var string
      */
     protected $redirectTo = RouteServiceProvider::HOME;
+    protected function redirectTo(){
+        if(Auth()->user()->usertype == 'admin')
+        {
+            return route('home');
+        }
+        elseif(Auth()->user()->usertype == 'student')
+        {
+            dd('sorry! not updated student dashboard');
+            //return route('home');
+        }
+    }
 }

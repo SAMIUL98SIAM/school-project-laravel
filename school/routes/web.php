@@ -53,6 +53,12 @@ Route::group(['middleware'=>'auth'],function () {
         Route::post('/change-password/update',[\App\Http\Controllers\Admin\ProfileController::class,'passworUpdate'])->name('profiles.change-password.update');
     });
 
+    Route::prefix('communicates')->group(function(){
+        Route::get('/view',[\App\Http\Controllers\Admin\CommunicateController::class,'index'])->name('communicates.view');
+        Route::get('/delete/{id}',[\App\Http\Controllers\Admin\CommunicateController::class,'destroy'])->name('communicates.delete');
+    });
+
+
     Route::prefix('logos')->group(function(){
         Route::get('/view',[\App\Http\Controllers\Admin\LogoController::class,'index'])->name('logos.view');
         Route::get('/create',[\App\Http\Controllers\Admin\LogoController::class,'create'])->name('logos.create');

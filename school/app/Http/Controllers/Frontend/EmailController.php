@@ -36,6 +36,7 @@ class EmailController extends Controller
         $contact->fname = $request->fname;
         $contact->lname = $request->lname;
         $contact->email = $request->email;
+        $contact->subject = $request->subject;
         $contact->content = $request->content;
         $contact->save();
 
@@ -43,14 +44,16 @@ class EmailController extends Controller
             'fname'=>$request->fname,
             'lname'=>$request->lname,
             'email'=>$request->email,
+            'subject'=> $request->subject,
             'content'=>$request->content
         );
         Mail::send('frontend.emails.contact',$data,function($messages) use($data){
-            // $messages->from('samiulsiam59@gmail.com','Orbitech Bd');
-            // $messages->to($data['email']);
-            // $messages->subject('Thanks for contact us');
+            $messages->from('samiulsiam59@gmail.com','Orbitech Bd');
+            $messages->to($data['email']);
             $messages->from($data['email'],'Orbitech Bd');
-            $messages->to('samiulsiam59@gmail.com');
+            // $messages->subject('Thanks for contact us');
+            // $messages->from($data['email'],'Orbitech Bd');
+            // $messages->to('samiulsiam59@gmail.com');
             $messages->subject('Thanks for contact us');
         });
 

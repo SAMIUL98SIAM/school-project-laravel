@@ -61,6 +61,13 @@
                         <div class="row form-group">
                             <div class="col-md-12">
                                 <!-- <label for="email">Email</label> -->
+                                <input type="text" name="subject" id="subject" class="form-control" placeholder="Subject" required>
+                            </div>
+                        </div>
+
+                        <div class="row form-group">
+                            <div class="col-md-12">
+                                <!-- <label for="email">Email</label> -->
                                 <input type="text" name="email" id="email" class="form-control" placeholder="Your email address" required>
                             </div>
                         </div>

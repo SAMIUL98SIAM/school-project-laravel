@@ -25,7 +25,9 @@ Route::get('/about', [App\Http\Controllers\Frontend\FrontendController::class, '
 Route::get('/pricing', [App\Http\Controllers\Frontend\FrontendController::class, 'pricing'])->name('frontend.layouts.pricing');
 Route::get('/blog', [App\Http\Controllers\Frontend\FrontendController::class, 'blog'])->name('frontend.layouts.blog');
 Route::get('/contact', [App\Http\Controllers\Frontend\FrontendController::class, 'contact'])->name('frontend.layouts.contact');
-Route::post('/contact', [App\Http\Controllers\Frontend\FrontendController::class, 'contact_store'])->name('frontend.layouts.contact.store');
+Route::post('/contact', [App\Http\Controllers\Frontend\EmailController::class, 'email_send'])->name('frontend.layouts.contact.store');
+// Route::post('/contact', [App\Http\Controllers\Frontend\FrontendController::class, 'contact_store'])->name('frontend.layouts.contact.store');
+
 
 
 

@@ -136,5 +136,6 @@
     });
 	</script>
 	</body>
+    @yield('scripts')
 </html>
 

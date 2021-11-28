@@ -286,8 +286,8 @@ Route::group(['middleware'=>'auth'],function () {
 
         /*Marksheet*/
         Route::get('/marksheet/view',[\App\Http\Controllers\Admin\Report\MarksheetController::class,'index'])->name('reports.marksheet.view');
-        Route::get('/marksheet/create',[\App\Http\Controllers\Admin\Report\MarksheetController::class,'getMarksheet'])->name('reports.marksheet.get');
-        Route::get('/marksheet/pdf',[\App\Http\Controllers\Admin\Report\MarksheetController::class,'pdf'])->name('reports.marksheet.pdf');
+        Route::get('/marksheet/create',[\App\Http\Controllers\Admin\Report\MarksheetController::class,'pdf'])->name('reports.marksheet.pdf');
+        // Route::get('/marksheet/pdf',[\App\Http\Controllers\Admin\Report\MarksheetController::class,'pdf'])->name('reports.marksheet.pdf');
         /*Marksheet*/
 
         /*Attendence*/

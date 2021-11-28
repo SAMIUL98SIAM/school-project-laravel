@@ -248,21 +248,21 @@ class StudentRegController extends Controller
         DB::transaction(function() use($request,$student_id){
             $user = User::where('id',$student_id)->first();
             $user->usertype = 'student';
-            $user->name = $request->name;
-            $user->fname = $request->fname;
-            $user->mname = $request->mname;
-            $user->mobile = $request->mobile;
-            $user->address = $request->address;
-            $user->religion = $request->religion;
-            $user->gender = $request->gender;
-            $user->dob = date('Y-m-d',strtotime($request->dob));
-            if($request->file('image')){
-                $file = $request->file('image');
-                @unlink(public_path('upload/student_image/'.$user->imgae));
-                $filename = date('YmdHi').$file->getClientOriginalName();
-                $file->move(public_path('upload/student_image'),$filename);
-                $user['image'] = $filename;
-            }
+            // $user->name = $request->name;
+            // $user->fname = $request->fname;
+            // $user->mname = $request->mname;
+            // $user->mobile = $request->mobile;
+            // $user->address = $request->address;
+            // $user->religion = $request->religion;
+            // $user->gender = $request->gender;
+            // $user->dob = date('Y-m-d',strtotime($request->dob));
+            // if($request->file('image')){
+            //     $file = $request->file('image');
+            //     @unlink(public_path('upload/student_image/'.$user->imgae));
+            //     $filename = date('YmdHi').$file->getClientOriginalName();
+            //     $file->move(public_path('upload/student_image'),$filename);
+            //     $user['image'] = $filename;
+            // }
             $user->save();
 
             $assign_student = new AssignStudent();

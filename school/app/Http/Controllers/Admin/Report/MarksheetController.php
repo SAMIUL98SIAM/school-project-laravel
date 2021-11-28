@@ -99,6 +99,24 @@ class MarksheetController extends Controller
 
     public function pdf(Request $request)
     {
-        //
+        $year_id = $request->year_id ;
+        $class_id = $request->class_id ;
+        $exam_type_id = $request->exam_type_id ;
+        $id_no = $request->id_no ;
+        $data['count_fail'] = StudentMarks::where('year_id',$year_id)->where('class_id',$class_id)->where('exam_type_id',$exam_type_id)->where('id_no',$id_no)->where('marks','<','33')->get()->count();
+        $singleStudent = StudentMarks::where('year_id',$year_id)->where('class_id',$class_id)->where('exam_type_id',$exam_type_id)->where('id_no',$id_no)->first();
+        if($singleStudent == true)
+        {
+            $data['allMarks'] = StudentMarks::with(['assign_subject','year'])->where('class_id',$class_id)->where('exam_type_id',$exam_type_id)->where('id_no',$id_no)->get();
+            $data['allGrades']= MarksGrade::all();
+            //return view('admin.report.marksheet.print_marksheet',compact('count_fail'),$data);
+            $pdf = PDF::loadView('admin.report.marksheet.pdf',$data);
+            $pdf->SetProtection(['copy','print'],'','pass');
+            return $pdf->stream('document.pdf');
+        }
+        else
+        {
+            return redirect()->back()->with('error','Sorry!! This criteria does not match');
+        }
     }
 }

@@ -35,7 +35,7 @@
 
 
                     <div class="card-body">
-                        <form method="GET" action="{{route('reports.marksheet.get')}}" id="myForm" target="_blank">
+                        <form method="GET" action="{{route('reports.marksheet.pdf')}}" id="myForm" target="_blank">
                             <div class="form-row">
                                 <div class="col-3">
                                     <label class="year_id">Year </label>
@@ -64,20 +64,22 @@
                                         @endforeach
                                     </select>
                                 </div>
-                                <div class="col-3">
+                                {{-- <div class="col-3">
                                     <label>ID No</label>
                                     <input type="text" name="id_no"  id="id_no" class="form-control form-control-sm">
+                                </div> --}}
+                                <div class="col-3">
+                                    <label>Student ID Select <font style="color: red">*</font></label>
+                                    <select name="id_no" id="id_no" class="form-control form-control-sm">
+                                     <option value="">Select ID</option>
+                                    </select>
                                 </div>
                                 <div class="col-3" style="padding-top: 30px;">
                                     <button class="btn btn-primary btn-sm" type="submit" id="search" name="search">Search</button>
                                 </div>
                             </div>
-
-
                         </form>
                     </div>
-
-
                 </div>
             <!-- /.card -->
             </section>
@@ -95,18 +97,19 @@
 
     <script type="text/javascript">
         $(function(){
-            $(document).on('change','#class_id',function(){
+            $(document).on('change','#class_id,#year_id',function(){
                 var class_id = $('#class_id').val();
+                var year_id = $('#year_id').val();
                 $.ajax({
-                    url:"{{route('get-subject')}}",
+                    url:"{{route('get-student')}}",
                     type: "GET",
-                    data: {class_id:class_id},
+                    data: {class_id:class_id,year_id:year_id},
                     success: function(data){
-                        var html = '<option value="">Select Subject</option>';
+                        var html = '<option value="">Select Roll NO</option>';
                         $.each(data,function(key,v){
-                            html +='<option value="'+v.id+'">'+v.subject.name+'</option>';
+                            html +='<option value="'+v.student.id_no+'">'+v.student.id_no+'</option>';
                         });
-                        $('#assign_subject_id').html(html);
+                        $('#id_no').html(html);
                     }
                 });
             });

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 18, 2021 at 02:24 PM
+-- Generation Time: Jan 16, 2022 at 10:57 PM
 -- Server version: 10.4.17-MariaDB
 -- PHP Version: 7.3.26
 
@@ -188,7 +188,7 @@ CREATE TABLE `communicates` (
   `lname` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `email` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `subject` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `message` longtext COLLATE utf8mb4_unicode_ci NOT NULL,
+  `content` longtext COLLATE utf8mb4_unicode_ci NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -197,9 +197,11 @@ CREATE TABLE `communicates` (
 -- Dumping data for table `communicates`
 --
 
-INSERT INTO `communicates` (`id`, `fname`, `lname`, `email`, `subject`, `message`, `created_at`, `updated_at`) VALUES
+INSERT INTO `communicates` (`id`, `fname`, `lname`, `email`, `subject`, `content`, `created_at`, `updated_at`) VALUES
 (3, 'Samiul', 'Akib', 'jashim43@gmail.com', 'Leave', 'fdgfhfh', '2021-11-03 13:39:51', '2021-11-03 13:39:51'),
-(4, 'Aminul', 'Akib', 'jashim43@gmail.com', 'fdgdfshs', 'hgfdjkhklgj', '2021-11-03 13:41:58', '2021-11-03 13:41:58');
+(4, 'Aminul', 'Akib', 'jashim43@gmail.com', 'fdgdfshs', 'hgfdjkhklgj', '2021-11-03 13:41:58', '2021-11-03 13:41:58'),
+(5, 'Aminul', 'Akib', 'samiulsiam89@gmail.com', 'Registration issue', 'dsgfdsgd', '2022-01-14 11:12:31', '2022-01-14 11:12:31'),
+(6, 'humayun', 'Hoque', 'samiulsiam59@gmail.com', 'Leave', 'gfdgfj', '2022-01-16 15:50:44', '2022-01-16 15:50:44');
 
 -- --------------------------------------------------------
 
@@ -783,7 +785,7 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `usertype`, `name`, `email`, `email_verified_at`, `password`, `mobile`, `address`, `gender`, `image`, `fname`, `mname`, `religion`, `id_no`, `dob`, `code`, `role`, `join_date`, `designation_id`, `salary`, `status`, `remember_token`, `created_at`, `updated_at`) VALUES
-(1, 'admin', 'Samiul', 'samiul89@gmail.com', NULL, '$2y$10$zJy6.jS0597ZONbEprC.F.9mOaupJgGPjRmO7qLse9/T2UTs8xBs2', '01992569682', 'Uttara, Dhaka', 'Male', '202111070450sa.jpg', NULL, NULL, NULL, NULL, NULL, NULL, 'Admin', NULL, NULL, NULL, 1, NULL, NULL, '2021-11-06 22:50:13'),
+(1, 'admin', 'Samiul', 'samiulsiam59@gmail.com', NULL, '$2y$10$G5g7hFaIZ/8FhIknkw5SCeYyHDsME0fMRPFP2nJnwojIm9SNR8ZRm', '01992569682', 'Uttara, Dhaka', 'Male', '202111070450sa.jpg', NULL, NULL, NULL, NULL, NULL, NULL, 'Admin', NULL, NULL, NULL, 1, NULL, NULL, '2021-11-06 22:50:13'),
 (2, 'admin', 'Kabir', 'kabir@gmail.com', NULL, '$2y$10$.wKYubU9AM8KtKgW1oPokuN2FXachNhtkPrbnlovWM2sQbQJSu9bG', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '5375', 'Operator', NULL, NULL, NULL, 1, NULL, '2021-11-06 14:13:36', '2021-11-06 14:13:36'),
 (3, 'admin', 'Usman', 'Usman@gmail.com', NULL, '$2y$10$mUKgP6fCVZENEDbI2ZxsZuhGtw./TuGgtVzSJXnzFrmgUzZ/X0vcm', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2353', 'Admin', NULL, NULL, NULL, 1, NULL, '2021-11-06 14:13:50', '2021-11-06 14:13:50'),
 (4, 'student', 'Rafiqul Hoque', NULL, NULL, '$2y$10$iBRe1/01xETuj/3EGMANIe66KZnhejtuex8/XJTmJTcQvdGp7ObbW', '01992569682', 'Badda', 'Male', '202111062221istockphoto-1171062918-612x612.jpg', 'Sattar', 'Hasina', 'Islam', '20200001', '2000-10-01', '4702', NULL, NULL, NULL, NULL, 1, NULL, '2021-11-06 14:14:33', '2021-11-08 00:46:05'),
@@ -1044,7 +1046,7 @@ ALTER TABLE `assign_subjects`
 -- AUTO_INCREMENT for table `communicates`
 --
 ALTER TABLE `communicates`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `designations`

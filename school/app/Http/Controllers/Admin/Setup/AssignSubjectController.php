@@ -66,7 +66,7 @@ class AssignSubjectController extends Controller
      */
     public function show($class_id)
     {
-        $data['editData'] = AssignSubject::where('class_id',$class_id)->orderBy('class_id','asc')->get();
+        $data['editData'] = AssignSubject::where('class_id',$class_id)->orderBy('subject_id','asc')->get();
         return view('admin.setup.assign_subject.show',$data);
     }
 
